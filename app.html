@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Names</title>
+</head>
+<body>
+    <h2>Enter Names (comma-separated)</h2>
+    <form id="namesForm">
+        <input type="text" name="names" id="names" />
+        <input type="button" value="Send" onclick="sendNames()" />
+    </form>
+    <script>
+        function sendNames() {
+            var names = document.getElementById('names').value;
+            fetch('YOUR_ENDPOINT_HERE', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ names: names }),
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Success:\n' + data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

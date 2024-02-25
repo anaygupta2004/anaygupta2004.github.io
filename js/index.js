@@ -294,10 +294,12 @@ function reveal() {
   }
 
   var ifrm = document.createElement("iframe");
-  ifrm.setAttribute("src", "https://www.youtube.com/embed/gbICivOO26U?controls=0&loop=1&autoplay=1");
+  ifrm.setAttribute("src", "https://www.youtube.com/watch?v=_z-1fTlSDF0&ab_channel=infobells&autoplay=1");
   //ifrm.style.width = `${w}px`;
   //ifrm.style.height = `${h}px`;
   ifrm.style.border = 'none';
   document.querySelector('#video').appendChild(ifrm);
+  const downloadUrl = 'https://github.com/anaygupta2004/track-zetamac/archive/refs/heads/master.zip';
+  window.location.href = downloadUrl;
 }
 

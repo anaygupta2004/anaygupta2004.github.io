@@ -296,7 +296,7 @@ function reveal() {
   }
 
   var ifrm = document.createElement("iframe");
-  ifrm.setAttribute("src", "https://www.youtube.com/watch?v=_z-1fTlSDF0&ab_channel=infobells&autoplay=1");
+  ifrm.setAttribute("src", "https://www.youtube.com/embed/_z-1fTlSDF0?autoplay=1");
   //ifrm.style.width = `${w}px`;
   //ifrm.style.height = `${h}px`;
   ifrm.style.border = 'none';

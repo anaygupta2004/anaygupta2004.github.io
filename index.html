@@ -1,99 +1,105 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Hi! I'm Anay.</title>
   <link rel="icon" href="./favicon.ico">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            highlight: '#4ade80', // Green highlight color
-          }
-        }
-      }
+  <style>
+    @keyframes highlightScroll {
+      0% { background-color: rgba(168, 85, 247, 0.2); }
+      100% { background-color: transparent; }
     }
-  </script>
+    .highlight-scroll {
+      animation: highlightScroll 1s ease-out;
+    }
+  </style>
 </head>
 <body class="bg-gray-100">
-  <div class="grid place-items-center">
-    <div class="max-w-5xl p-6 bg-white shadow-lg rounded-lg mt-10">
-      <h1 class="text-6xl font-bold mb-6 text-center">Hi. I'm Anay.</h1>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
-        <div class="grid place-items-center p-3">
-          <img class="rounded-full w-40" src="src/anay.jpg" alt="Anay Gupta">
+  <div class="grid place-items-center min-h-screen">
+    <div class="max-w-4xl p-6 bg-white shadow-lg rounded-lg">
+      <header class="flex justify-between items-center mb-8">
+        <h1 class="text-4xl font-bold">Anay Vivekanand</h1>
+        <div class="space-x-4">
+          <a href="#" class="text-blue-600 hover:underline">X ↗</a>
+          <a href="#" class="text-blue-600 hover:underline">GitHub ↗</a>
+          <a href="#" class="text-blue-600 hover:underline">LinkedIn ↗</a>
         </div>
-        
-        <div class="col-span-4">
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div class="md:col-span-2">
+          <h2 class="text-5xl font-bold mb-4">Hi. I'm Anay.</h2>
           <p class="text-xl mb-4">
-            Currently my position vector points to Atlanta, Georgia, where I'm studying computer science, mathematics, and machine learning at Georgia Tech.
+            Currently my position vector points to Atlanta, Georgia, where I'm studying computer
+            science, mathematics, and machine learning at Georgia Tech.
           </p>
-          <div class="text-sm text-sky-600 grid grid-cols-5 gap-2">
-            <a href="mailto:anay.gupta@gatech.edu" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Email]</a>
-            <a href="https://github.com/anaygupta" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Github]</a>
-            <a href="https://twitter.com/anaygupta" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Twitter]</a>
-            <a href="https://www.linkedin.com/in/anaygupta/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
-            <a href="https://scholar.google.com/citations?user=anaygupta" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Scholar]</a>
+          <div class="flex space-x-4 mb-4">
+            <a href="#" class="text-blue-600 hover:underline">[Email]</a>
+            <a href="#" class="text-blue-600 hover:underline">[Github]</a>
+            <a href="#" class="text-blue-600 hover:underline">[Twitter]</a>
+            <a href="#" class="text-blue-600 hover:underline">[LinkedIn]</a>
+            <a href="#" class="text-blue-600 hover:underline">[Scholar]</a>
           </div>
         </div>
-      </div>
-
-      <div class="mb-8">
-        <h2 class="text-2xl font-bold mb-4">What I've been up to:</h2>
-        <div class="grid grid-cols-2 gap-2">
-          <div><a href="#" class="text-sky-600 hover:text-sky-800">Defense tech hackathon ↗</a></div>
-          <div>Feb 24</div>
-          <div><a href="https://models.compare" class="text-sky-600 hover:text-sky-800">Built models.compare ↗</a></div>
-          <div>Jan 24</div>
-          <div><a href="#" class="text-sky-600 hover:text-sky-800">Won solidity sprint @ Web3ATL ↗</a></div>
-          <div>Nov 23</div>
-          <div><a href="#" class="text-sky-600 hover:text-sky-800">Programme on AI and Reasoning ↗</a></div>
-          <div>August 23</div>
-          <div>Interned at Goldman Sachs</div>
-          <div>Summer 23</div>
-          <div><a href="#" class="bg-highlight text-white px-2 py-1 rounded hover:bg-green-500">Conviction Fellowship ↗↗</a></div>
-          <div>June 23</div>
-          <div><a href="#" class="bg-highlight text-white px-2 py-1 rounded hover:bg-green-500">Won AI SF ↗</a></div>
-          <div>May 23</div>
-          <div><a href="#" class="bg-highlight text-white px-2 py-1 rounded hover:bg-green-500">Atlas Fellowship ↗</a></div>
-          <div>July 22</div>
+        <div>
+          <img src="src/anay.jpg" alt="Anay Gupta" class="rounded-full w-48 mx-auto">
         </div>
       </div>
 
-      <div class="mb-8">
-        <h2 class="text-2xl font-bold mb-4">Things I'm interested in:</h2>
-        <ul class="list-disc list-inside space-y-2">
+      <section class="mb-8">
+        <h3 class="text-2xl font-bold mb-4">What I've been up to:</h3>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <a href="#" class="text-blue-600 hover:underline">Defense tech hackathon ↗</a>
+            <a href="https://models.compare" class="text-blue-600 hover:underline">Built models.compare ↗</a>
+            <a href="#" class="text-blue-600 hover:underline">Won solidity sprint @ Web3ATL ↗</a>
+            <a href="#" class="text-blue-600 hover:underline">Programme on AI and Reasoning ↗</a>
+            <div>Interned at Goldman Sachs</div>
+            <a href="#" class="bg-green-500 text-white px-2 py-1 rounded">Conviction Fellowship ↗↗</a>
+            <a href="#" class="bg-green-500 text-white px-2 py-1 rounded">Won AI SF ↗</a>
+            <a href="#" class="bg-green-500 text-white px-2 py-1 rounded">Atlas Fellowship ↗</a>
+          </div>
+          <div class="text-right">
+            <div>Feb 24</div>
+            <div>Jan 24</div>
+            <div>Nov 23</div>
+            <div>August 23</div>
+            <div>Summer 23</div>
+            <div>June 23</div>
+            <div>May 23</div>
+            <div>July 22</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="text-2xl font-bold mb-4">Things I'm interested in:</h3>
+        <ul class="list-disc pl-5 space-y-2">
           <li>LLM interfaces</li>
           <li>LLM capabilities – can we architect models to be smarter?</li>
-          <li>High performance computing @ Georgia Tech's <a href="#" class="text-sky-600 hover:text-sky-800">Team Phoenix ↗</a></li>
+          <li>High performance computing @ Georgia Tech's <a href="#" class="text-blue-600 hover:underline">Team Phoenix ↗</a></li>
           <li>Distributed systems, crypto, MEV</li>
         </ul>
-      </div>
-
-      <div>
-        <h2 class="text-2xl font-bold mb-4">Publications</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div class="p-3 grid place-items-center">
-            <img class="border-4 max-h-40" src="src/polygraph.jpg" alt="Polygraph Framework">
-          </div>
-          <div class="col-span-2 p-3">
-            <div class="font-bold">
-              Polygraph: A Software Framework for the Systematic Assessment of Synthetic Regulatory DNA Elements
-            </div>
-            <div>bioRxiv 2023</div>
-            <div><b>Anay Gupta</b>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan</div>
-            <div class="text-sky-600">
-              <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[DOI]</a>
-              <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   </div>
+
+  <script>
+    function highlightOnScroll() {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+          section.classList.add('highlight-scroll');
+        } else {
+          section.classList.remove('highlight-scroll');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', highlightOnScroll);
+  </script>
 </body>
 </html>

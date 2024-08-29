@@ -4,47 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Anay Gupta</title>
+  <title>Hi! I'm Anay.</title>
   <link rel="icon" href="./favicon.ico">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            highlight: '#4ade80', // Green highlight color
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
+<body class="bg-gray-100">
   <div class="grid place-items-center">
-    <div class="max-w-5xl p-6">
-      <div class="grid grid-cols-1 sm:grid-cols-5">
-
+    <div class="max-w-5xl p-6 bg-white shadow-lg rounded-lg mt-10">
+      <h1 class="text-6xl font-bold mb-6 text-center">Hi. I'm Anay.</h1>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
         <div class="grid place-items-center p-3">
           <img class="rounded-full w-40" src="src/anay.jpg" alt="Anay Gupta">
         </div>
-
+        
         <div class="col-span-4">
-          <div class="font-bold text-3xl p-3 grid place-items-center">
-          Anay Gupta
-          </div>
-          <div class="text-md p-3 grid place-items-center">
-            <div>
-              I am a junior studying computer science at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-sky-600 hover:text-sky-800" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on the Enterprise AI team at Delta Air Lines and the AI/ML department at Genentech. Outside of research, I enjoy playing poker and bouldering.
-              <br><br>
-            </div>
-          </div>
-          <div class="text-sm text-sky-600 p-3 grid place-items-center">
-            <div>
-            <a href="mailto:anay.gupta@gatech.edu" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Email: anay.gupta@gatech.edu]</a>
+          <p class="text-xl mb-4">
+            Currently my position vector points to Atlanta, Georgia, where I'm studying computer science, mathematics, and machine learning at Georgia Tech.
+          </p>
+          <div class="text-sm text-sky-600 grid grid-cols-5 gap-2">
+            <a href="mailto:anay.gupta@gatech.edu" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Email]</a>
             <a href="https://github.com/anaygupta" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Github]</a>
             <a href="https://twitter.com/anaygupta" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Twitter]</a>
             <a href="https://www.linkedin.com/in/anaygupta/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
-            <a href="https://scholar.google.com/citations?user=anaygupta" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
-            </div>
+            <a href="https://scholar.google.com/citations?user=anaygupta" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Scholar]</a>
           </div>
         </div>
       </div>
 
-      <div class="">
-        <div class="p-3">
-          <div class="text-xl font-bold">
-          Publications
-          </div>
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">What I've been up to:</h2>
+        <div class="grid grid-cols-2 gap-2">
+          <div><a href="#" class="text-sky-600 hover:text-sky-800">Defense tech hackathon ↗</a></div>
+          <div>Feb 24</div>
+          <div><a href="https://models.compare" class="text-sky-600 hover:text-sky-800">Built models.compare ↗</a></div>
+          <div>Jan 24</div>
+          <div><a href="#" class="text-sky-600 hover:text-sky-800">Won solidity sprint @ Web3ATL ↗</a></div>
+          <div>Nov 23</div>
+          <div><a href="#" class="text-sky-600 hover:text-sky-800">Programme on AI and Reasoning ↗</a></div>
+          <div>August 23</div>
+          <div>Interned at Goldman Sachs</div>
+          <div>Summer 23</div>
+          <div><a href="#" class="bg-highlight text-white px-2 py-1 rounded hover:bg-green-500">Conviction Fellowship ↗↗</a></div>
+          <div>June 23</div>
+          <div><a href="#" class="bg-highlight text-white px-2 py-1 rounded hover:bg-green-500">Won AI SF ↗</a></div>
+          <div>May 23</div>
+          <div><a href="#" class="bg-highlight text-white px-2 py-1 rounded hover:bg-green-500">Atlas Fellowship ↗</a></div>
+          <div>July 22</div>
         </div>
+      </div>
 
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Things I'm interested in:</h2>
+        <ul class="list-disc list-inside space-y-2">
+          <li>LLM interfaces</li>
+          <li>LLM capabilities – can we architect models to be smarter?</li>
+          <li>High performance computing @ Georgia Tech's <a href="#" class="text-sky-600 hover:text-sky-800">Team Phoenix ↗</a></li>
+          <li>Distributed systems, crypto, MEV</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Publications</h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="p-3 grid place-items-center">
             <img class="border-4 max-h-40" src="src/polygraph.jpg" alt="Polygraph Framework">
@@ -53,19 +84,14 @@
             <div class="font-bold">
               Polygraph: A Software Framework for the Systematic Assessment of Synthetic Regulatory DNA Elements
             </div>
-            <div>
-              bioRxiv 2023
-            </div>
-            <div>
-              <b>Anay Gupta</b>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan
-            </div>
+            <div>bioRxiv 2023</div>
+            <div><b>Anay Gupta</b>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan</div>
             <div class="text-sky-600">
               <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[DOI]</a>
               <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
-            </div>     
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

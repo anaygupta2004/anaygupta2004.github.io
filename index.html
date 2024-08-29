@@ -1,108 +1,135 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Hi! I'm Anay.</title>
-  <link rel="icon" href="./favicon.ico">
+  <link rel="icon" href="src/favicon.png">
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+  </style>
 </head>
-<body class="text-lg">
+<body class="text-lg bg-gray-50">
   <div class="grid place-items-center">
     <div class="max-w-6xl p-6">
-      <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8 fade-in">
         <div class="grid place-items-center p-3">
-          <img class="rounded-full w-48" src="src/anay.jpg" alt="Anay Gupta">
+          <img class="rounded-full w-48 shadow-lg" src="src/anay.jpg" alt="Anay Gupta">
         </div>
-        
+
         <div class="col-span-4">
-          <div class="font-bold text-5xl p-3 grid place-items-center mb-4">
+          <div class="font-bold text-5xl p-3 grid place-items-center mb-4 text-gray-800">
             Hi. I'm Anay.
           </div>
-          <div class="text-xl p-3 grid place-items-center">
+          <div class="text-xl p-3 grid place-items-center text-gray-700">
             <div>
-              Currently, I'm a student in Atlanta, Georgia, where I'm studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-sky-600 hover:text-sky-800" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on information retrieval on the Enterprise AI team at <a class="text-sky-600 hover:text-sky-800" href="https://www.delta.com/" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a software framework on the AI/ML department at <a class="text-sky-600 hover:text-sky-800" href="https://www.gene.com/" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.
+              Currently, I'm a student in Atlanta, Georgia, where I'm studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-sky-600 hover:text-sky-800 transition duration-300" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on information retrieval on the Enterprise AI team at <a class="text-sky-600 hover:text-sky-800 transition duration-300" href="https://www.delta.com/" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a software framework on the AI/ML department at <a class="text-sky-600 hover:text-sky-800 transition duration-300" href="https://www.gene.com/" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.
             </div>
           </div>
           <div class="text-lg text-sky-600 p-3 grid place-items-center">
-            <div>
-              <a href="mailto:anay@gatech.edu" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Email]</a>
-              <a href="https://github.com/anaygupta2004" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Github]</a>
-              <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
-              <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
+            <div class="space-x-4">
+              <a href="mailto:anay@gatech.edu" class="hover:text-sky-800 transition duration-300" target="_blank" rel="noopener noreferrer">[Email]</a>
+              <a href="https://github.com/anaygupta2004" class="hover:text-sky-800 transition duration-300" target="_blank" rel="noopener noreferrer">[Github]</a>
+              <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800 transition duration-300" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
+              <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800 transition duration-300" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-4">What I've been up to:</h2>
+      <div class="mb-8 bg-white p-6 rounded-lg shadow-md fade-in" style="animation-delay: 0.2s;">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">What I've been up to:</h2>
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800">Interned at Microsoft Research ↗</a>
+            <a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800 transition duration-300">Interned at Microsoft Research ↗</a>
           </div>
           <div>Summer 24</div>
           <div>
-            <a href="https://delta.com/" class="text-sky-600 hover:text-sky-800">Interned at Delta Air Lines ↗</a>
+            <a href="https://delta.com/" class="text-sky-600 hover:text-sky-800 transition duration-300">Interned at Delta Air Lines ↗</a>
           </div>
           <div>Spring 24</div>
           <div>
-            <a href="https://gene.com/" class="text-sky-600 hover:text-sky-800">Interned at Genentech ↗</a>
+            <a href="https://gene.com/" class="text-sky-600 hover:text-sky-800 transition duration-300">Interned at Genentech ↗</a>
           </div>
           <div>Summer 23</div>
           <div>
-            <a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-600 hover:text-sky-800">Completed Google's CS Research Mentorship Program ↗</a>
+            <a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-600 hover:text-sky-800 transition duration-300">Completed Google's CS Research Mentorship Program ↗</a>
           </div>
           <div>Spring 23</div>
           <div>
-            <a href="https://www.globalchallengesproject.org/" class="text-sky-600 hover:text-sky-800">Attended an AI Safety Workshop ↗</a>
+            <a href="https://www.globalchallengesproject.org/" class="text-sky-600 hover:text-sky-800 transition duration-300">Attended an AI Safety Workshop ↗</a>
           </div>
           <div>March 23</div>
           <div>
-            <a href="https://goldwaterscholarship.gov/" class="text-sky-600 hover:text-sky-800">Won the Barry Goldwater Scholarship ↗</a>
+            <a href="https://goldwaterscholarship.gov/" class="text-sky-600 hover:text-sky-800 transition duration-300">Won the Barry Goldwater Scholarship ↗</a>
           </div>
           <div>May 23</div>
           <div>
-            <a href="https://getzlab.org/" class="text-sky-600 hover:text-sky-800">Interned at the Broad Institute of MIT and Harvard ↗</a>
+            <a href="https://getzlab.org/" class="text-sky-600 hover:text-sky-800 transition duration-300">Interned at the Broad Institute of MIT and Harvard ↗</a>
           </div>
           <div>Summer 21 & 22</div>
         </div>
       </div>
 
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-4">Things I'm interested in:</h2>
-        <ul class="list-disc list-inside space-y-2">
+      <div class="mb-8 bg-white p-6 rounded-lg shadow-md fade-in" style="animation-delay: 0.4s;">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">Things I'm interested in:</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
           <li>LLMs in biology</li>
           <li>LLM capabilities – can we architect models to be smarter?</li>
-          <li>Generalist LMs</a></li>
-          <li>Distributed systems, data visualization, and deep learning</li>
+          <li>Generalist LMs</li>
+          <li>Distributed systems, data visualization, and cloud computing</li>
         </ul>
       </div>
 
-      <div>
-        <h2 class="text-3xl font-bold mb-4">Publications</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div class="bg-white p-6 rounded-lg shadow-md fade-in" style="animation-delay: 0.6s;">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">Publications</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div class="p-3 grid place-items-center">
-            <img class="border-4 max-h-40" src="src/polygraph.jpg" alt="Polygraph Framework">
+            <img class="w-full h-auto rounded-lg shadow-md hover:shadow-xl transition duration-300" src="src/polygraph.jpg" alt="Polygraph Framework">
           </div>
           <div class="col-span-2 p-3">
-            <div class="font-bold text-xl">
+            <div class="font-bold text-xl text-gray-800">
               Polygraph: A Software Framework for the Systematic Assessment of Synthetic Regulatory DNA Elements
             </div>
-            <div>
+            <div class="text-gray-600">
               bioRxiv 2023
             </div>
-            <div>
+            <div class="text-gray-700">
               <b>Anay Gupta</b>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan
             </div>
-            <div class="text-sky-600">
-              <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[DOI]</a>
-              <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
+            <div class="text-sky-600 mt-2">
+              <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800 transition duration-300 mr-4" target="_blank" rel="noopener noreferrer">[DOI]</a>
+              <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800 transition duration-300" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    function animateOnScroll() {
+      const elements = document.querySelectorAll('.fade-in');
+      elements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+        if (isVisible) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    }
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+  </script>
 </body>
 </html>

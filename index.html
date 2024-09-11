@@ -1,131 +1,201 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Hi! I'm Anay.</title>
-  <link rel="icon" href="src/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anay Gupta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="/styles.css">
 </head>
-<body class="text-lg bg-white">
-  <div class="grid place-items-center">
-    <div class="max-w-6xl p-6">
-      <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
-        <div class="grid place-items-center p-3">
-          <img class="rounded-full w-48" src="src/anay.jpg" alt="Anay Gupta">
+<body>
+    <div id="app" x-data="{ currentPage: window.location.pathname }">
+        <!-- Navigation -->
+        <nav class="bg-gray-800 text-white p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="/" class="text-xl font-bold">Anay Gupta</a>
+                <div>
+                    <a href="/" class="mx-2" :class="{ 'underline': currentPage === '/' }">Home</a>
+                    <a href="/arxiv" class="mx-2" :class="{ 'underline': currentPage === '/arxiv' }">Arxiv Paper Finder</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Home Page Content -->
+        <div x-show="currentPage === '/' || currentPage === ''">
+            <div class="grid place-items-center">
+                <div class="max-w-6xl p-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
+                        <div class="grid place-items-center p-3">
+                            <img src="src/anay.jpg" alt="Anay Gupta" class="rounded-full w-48">
+                        </div>
+                        <div class="col-span-4">
+                            <div class="font-bold text-5xl p-3 grid place-items-center mb-4">
+                                Hi. I'm Anay.
+                            </div>
+                            <div class="text-xl p-3 grid place-items-center">
+                                <div>
+                                    Currently, I'm a student in Atlanta, Georgia, where I'm studying
+                                    computer science and machine learning at Georgia Tech. My interests span
+                                    from machine learning to software engineering. Last summer, I was an
+                                    intern at <a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I
+                                    worked on new ways to tokenize data for LLMs. I've also had the
+                                    pleasure to work on information retrieval on the Enterprise AI team at
+                                    <a href="https://www.delta.com/" class="text-sky-600 hover:text-sky-800" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a
+                                    software framework on the AI/ML department at
+                                    <a href="https://www.gene.com/" class="text-sky-600 hover:text-sky-800" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy
+                                    playing poker and bouldering.
+                                </div>
+                            </div>
+                            <div class="text-lg text-sky-600 p-3 grid place-items-center">
+                                <div class="space-x-4">
+                                    <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
+                                    <a href="https://github.com/anaygupta2004" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Github]</a>
+                                    <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
+                                    <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold mb-4">What I've been up to:</h2>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div><a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800">Interned at Microsoft Research ↗</a></div>
+                            <div>Summer 24</div>
+                            <div><a href="https://delta.com/" class="text-sky-600 hover:text-sky-800">Interned at Delta Air Lines ↗</a></div>
+                            <div>Spring 24</div>
+                            <div><a href="https://gene.com/" class="text-sky-600 hover:text-sky-800">Interned at Genentech ↗</a></div>
+                            <div>Summer 23</div>
+                            <div><a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-600 hover:text-sky-800">Completed Google's CS Research Mentorship Program ↗</a></div>
+                            <div>Spring 23</div>
+                            <div><a href="https://www.globalchallengesproject.org/" class="text-sky-600 hover:text-sky-800">Attended an AI Safety Workshop ↗</a></div>
+                            <div>March 23</div>
+                            <div><a href="https://goldwaterscholarship.gov/" class="text-sky-600 hover:text-sky-800">Won the Barry Goldwater Scholarship ↗</a></div>
+                            <div>May 22</div>
+                            <div><a href="https://getzlab.org/" class="text-sky-600 hover:text-sky-800">Interned at the Broad Institute of MIT and Harvard ↗</a></div>
+                            <div>Summer 21 & 22</div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold mb-4">Things I'm interested in:</h2>
+                        <ul class="list-disc list-inside">
+                            <li>LLMs in biology</li>
+                            <li>LLM capabilities -- can we architect models to be smarter?</li>
+                            <li>Generalist LMs</li>
+                            <li>Distributed systems, data visualization, and cloud computing</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">Publications</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <div class="p-3 grid place-items-center">
+                                <img src="src/polygraph.jpg" alt="Polygraph Framework" class="w-full h-auto rounded-lg">
+                            </div>
+                            <div class="col-span-2 p-3">
+                                <div class="font-bold text-xl">
+                                    Polygraph: A Software Framework for the Systematic Assessment of
+                                    Synthetic Regulatory DNA Elements
+                                </div>
+                                <div>bioRxiv 2023</div>
+                                <div>
+                                    <strong>Anay Gupta</strong>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen
+                                    Eraslan
+                                </div>
+                                <div class="text-sky-600 mt-2">
+                                    <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800 mr-4" target="_blank" rel="noopener noreferrer">[DOI]</a>
+                                    <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="col-span-4">
-          <div class="font-bold text-5xl p-3 grid place-items-center mb-4">
-            Hi. I'm Anay.
-          </div>
-          <div class="text-xl p-3 grid place-items-center">
-            <div>
-              Currently, I'm a student in Atlanta, Georgia, where I'm studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-sky-600 hover:text-sky-800" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on information retrieval on the Enterprise AI team at <a class="text-sky-600 hover:text-sky-800" href="https://www.delta.com/" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a software framework on the AI/ML department at <a class="text-sky-600 hover:text-sky-800" href="https://www.gene.com/" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.
-            </div>
-          </div>
-          <div class="text-lg text-sky-600 p-3 grid place-items-center">
-            <div class="space-x-4">
-              <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
-              <a href="https://github.com/anaygupta2004" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Github]</a>
-              <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
-              <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
-            </div>
-          </div>
-        </div>
-      </div>
+        <!-- Arxiv Paper Finder Content -->
+        <div x-show="currentPage === '/arxiv'">
+            <div class="container mx-auto px-4 py-8">
+                <h1 class="text-4xl font-bold text-gray-800 mb-8">LLM Paper Finder</h1>
+                
+                <div class="flex items-center justify-end mb-4">
+                    <span class="mr-2">Relevance Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="modeToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="ml-2">Annotation Mode</span>
+                </div>
 
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-4">What I've been up to:</h2>
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800">Interned at Microsoft Research ↗</a>
-          </div>
-          <div>Summer 24</div>
-          <div>
-            <a href="https://delta.com/" class="text-sky-600 hover:text-sky-800">Interned at Delta Air Lines ↗</a>
-          </div>
-          <div>Spring 24</div>
-          <div>
-            <a href="https://gene.com/" class="text-sky-600 hover:text-sky-800">Interned at Genentech ↗</a>
-          </div>
-          <div>Summer 23</div>
-          <div>
-            <a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-600 hover:text-sky-800">Completed Google's CS Research Mentorship Program ↗</a>
-          </div>
-          <div>Spring 23</div>
-          <div>
-            <a href="https://www.globalchallengesproject.org/" class="text-sky-600 hover:text-sky-800">Attended an AI Safety Workshop ↗</a>
-          </div>
-          <div>March 23</div>
-          <div>
-            <a href="https://goldwaterscholarship.gov/" class="text-sky-600 hover:text-sky-800">Won the Barry Goldwater Scholarship ↗</a>
-          </div>
-          <div>May 22</div>
-          <div>
-            <a href="https://getzlab.org/" class="text-sky-600 hover:text-sky-800">Interned at the Broad Institute of MIT and Harvard ↗</a>
-          </div>
-          <div>Summer 21 & 22</div>
-        </div>
-      </div>
+                <div class="mb-4">
+                    <label for="preferences" class="block mb-2">Enter your preferences:</label>
+                    <textarea id="preferences" rows="4" class="w-full p-2 border rounded"></textarea>
+                </div>
 
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-4">Things I'm interested in:</h2>
-        <ul class="list-disc list-inside space-y-2">
-          <li>LLMs in biology</li>
-          <li>LLM capabilities – can we architect models to be smarter?</li>
-          <li>Generalist LMs</li>
-          <li>Distributed systems, data visualization, and cloud computing</li>
-        </ul>
-      </div>
+                <button id="fetchButton" class="bg-blue-500 text-white px-4 py-2 rounded">Fetch Papers</button>
 
-      <div>
-        <h2 class="text-3xl font-bold mb-4">Publications</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div class="p-3 grid place-items-center">
-            <img class="w-full h-auto rounded-lg" src="src/polygraph.jpg" alt="Polygraph Framework">
-          </div>
-          <div class="col-span-2 p-3">
-            <div class="font-bold text-xl">
-              Polygraph: A Software Framework for the Systematic Assessment of Synthetic Regulatory DNA Elements
+                <div id="progressBar" class="w-full h-4 bg-gray-200 rounded-full mb-2" style="display: none;">
+                    <div class="h-full bg-blue-500 rounded-full" style="width: 0%"></div>
+                </div>
+
+                <div id="papers-container" class="space-y-6 mt-8"></div>
+
+                <div class="flex justify-between items-center mt-8">
+                    <button id="prevButton" class="bg-gray-300 text-gray-700 px-4 py-2 rounded">Previous</button>
+                    <span id="page-info" class="text-gray-700"></span>
+                    <button id="nextButton" class="bg-gray-300 text-gray-700 px-4 py-2 rounded">Next</button>
+                </div>
+
+                <button id="downloadButton" class="bg-green-500 text-white px-4 py-2 rounded mt-4">Download JSON</button>
+                <button id="viewVerdictsButton" class="bg-purple-500 text-white px-4 py-2 rounded mt-4 ml-4">View Verdicts</button>
             </div>
-            <div>
-              bioRxiv 2023
+
+            <!-- Settings Modal -->
+            <div id="settingsModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" style="display: none;">
+                <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+                    <div class="mt-3">
+                        <h2 class="text-2xl font-bold mb-4">Settings</h2>
+                        <div class="mb-4">
+                            <label for="openaiKey" class="block mb-2">OpenAI API Key:</label>
+                            <input type="password" id="openaiKey" class="w-full p-2 border rounded">
+                        </div>
+                        <div class="mb-4">
+                            <label for="maxResults" class="block mb-2">Max Results:</label>
+                            <input type="number" id="maxResults" class="w-full p-2 border rounded">
+                        </div>
+                        <div class="mb-4">
+                            <label for="papersPerPage" class="block mb-2">Papers Per Page:</label>
+                            <input type="number" id="papersPerPage" class="w-full p-2 border rounded">
+                        </div>
+                        <div class="mb-4">
+                            <label for="dateRange" class="block mb-2">Date Range (days):</label>
+                            <input type="number" id="dateRange" class="w-full p-2 border rounded">
+                        </div>
+                        <div class="mb-4">
+                            <label for="arxivCategories" class="block mb-2">arXiv Categories:</label>
+                            <input type="text" id="arxivCategories" class="w-full p-2 border rounded">
+                        </div>
+                        <button id="saveSettings" class="bg-blue-500 text-white px-4 py-2 rounded">Save Settings</button>
+                    </div>
+                </div>
             </div>
-            <div>
-              <b>Anay Gupta</b>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan
+
+            <!-- Verdicts Modal -->
+            <div id="verdictsModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" style="display: none;">
+                <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+                    <div class="mt-3 text-center">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Verdicts</h3>
+                        <div id="verdictsContainer" class="mt-2 px-7 py-3 text-left"></div>
+                        <div class="items-center px-4 py-3">
+                            <button id="closeVerdicts" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="text-sky-600 mt-2">
-              <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800 mr-4" target="_blank" rel="noopener noreferrer">[DOI]</a>
-              <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <script>
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-
-    // Copy email to clipboard
-    function copyEmail(e) {
-      e.preventDefault();
-      const email = "anay@gatech.edu";
-      navigator.clipboard.writeText(email).then(() => {
-        alert("Email copied to clipboard!");
-      }).catch(err => {
-        console.error('Failed to copy: ', err);
-      });
-    }
-  </script>
+    <script src="/script.js"></script>
 </body>
 </html>

@@ -14,11 +14,11 @@ import os
 from gptquery import GPT
 import time
 
-app = Flask(__name__, static_url_path="", static_folder=".")
+app = Flask(__name__, static_folder=".")
 
 # Configuration
 MAX_RESULTS = 100
-OPENAI_KEY = None
+OPENAI_KEY = os.environ.get("OPENAI_API_KEY")
 MODEL_NAME = "gpt-4-turbo"
 PAPERS_PER_PAGE = 10
 DATE_RANGE = 7  # Default to 7 days
@@ -27,13 +27,7 @@ ARXIV_CATEGORIES = ["cs.LG"]  # Default to cs.LG (Machine Learning)
 # Global variables
 paper_data = []
 
-
-def get_project_root():
-    return os.path.dirname(os.path.abspath(__file__))
-
-
-PROJECT_ROOT = get_project_root()
-VERDICTS_FILE = os.path.join(PROJECT_ROOT, "verdicts.jsonl")
+VERDICTS_FILE = "/tmp/verdicts.jsonl"
 
 
 def fetch_recent_papers():
@@ -104,13 +98,16 @@ def evaluate_relevance(paper, preferences):
         return False
 
 
-@app.route("/")
-@app.route("/arxiv")
-def index():
-    return send_file("index.html")
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve(path):
+    if path != "" and os.path.exists(path):
+        return send_from_directory(".", path)
+    else:
+        return send_from_directory(".", "index.html")
 
 
-@app.route("/fetch_papers", methods=["POST"])
+@app.route("/api/fetch_papers", methods=["POST"])
 def fetch_papers():
     preferences = request.form["preferences"]
     is_annotation_mode = request.form.get("is_annotation_mode") == "true"
@@ -147,7 +144,7 @@ def fetch_papers():
     return Response(stream_with_context(generate()), content_type="application/json")
 
 
-@app.route("/get_page", methods=["GET"])
+@app.route("/api/get_page", methods=["GET"])
 def get_page():
     page = int(request.args.get("page", 1))
     start = (page - 1) * PAPERS_PER_PAGE
@@ -155,7 +152,7 @@ def get_page():
     return jsonify({"papers": paper_data[start:end], "total": len(paper_data)})
 
 
-@app.route("/vote", methods=["POST"])
+@app.route("/api/vote", methods=["POST"])
 def vote():
     arxiv_id = request.form["arxiv_id"]
     vote_type = request.form["vote_type"]
@@ -171,14 +168,14 @@ def vote():
     return jsonify({"success": True, "votes": paper["votes"]})
 
 
-@app.route("/download_json")
+@app.route("/api/download_json")
 def download_json():
-    if not os.path.exists("data"):
-        os.makedirs("data")
+    if not os.path.exists("/tmp/data"):
+        os.makedirs("/tmp/data")
 
     is_annotation_mode = request.args.get("is_annotation_mode") == "true"
     filename = f"paper_data_{'annotation' if is_annotation_mode else 'relevance'}.json"
-    filepath = os.path.join(PROJECT_ROOT, "data", filename)
+    filepath = os.path.join("/tmp/data", filename)
 
     if not os.path.exists(filepath):
         with open(filepath, "w") as f:
@@ -194,7 +191,7 @@ def download_json():
     return send_file(filepath, as_attachment=True)
 
 
-@app.route("/update_settings", methods=["POST"])
+@app.route("/api/update_settings", methods=["POST"])
 def update_settings():
     global OPENAI_KEY, MAX_RESULTS, PAPERS_PER_PAGE, DATE_RANGE, ARXIV_CATEGORIES
 
@@ -234,7 +231,7 @@ def update_settings():
     return jsonify({"success": True})
 
 
-@app.route("/get_verdicts")
+@app.route("/api/get_verdicts")
 def get_verdicts():
     if os.path.exists(VERDICTS_FILE):
         with open(VERDICTS_FILE, "r") as f:

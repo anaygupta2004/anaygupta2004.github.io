@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalPapers = 0;
     let papers = [];
 
-    fetchButton.addEventListener('click', fetchPapers);
-    prevButton.addEventListener('click', () => changePage(-1));
-    nextButton.addEventListener('click', () => changePage(1));
-    downloadButton.addEventListener('click', downloadJSON);
-    viewVerdictsButton.addEventListener('click', viewVerdicts);
-    closeVerdictsButton.addEventListener('click', closeVerdicts);
-    saveSettingsButton.addEventListener('click', saveSettings);
+    if (fetchButton) fetchButton.addEventListener('click', fetchPapers);
+    if (prevButton) prevButton.addEventListener('click', () => changePage(-1));
+    if (nextButton) nextButton.addEventListener('click', () => changePage(1));
+    if (downloadButton) downloadButton.addEventListener('click', downloadJSON);
+    if (viewVerdictsButton) viewVerdictsButton.addEventListener('click', viewVerdicts);
+    if (closeVerdictsButton) closeVerdictsButton.addEventListener('click', closeVerdicts);
+    if (saveSettingsButton) saveSettingsButton.addEventListener('click', saveSettings);
 
     function fetchPapers() {
         const preferences = document.getElementById('preferences').value;
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.display = 'block';
         papersContainer.innerHTML = '';
 
-        fetch('/fetch_papers', {
+        fetch('/api/fetch_papers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function vote(arxivId, voteType) {
-        fetch('/vote', {
+        fetch('/api/vote', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function changePage(direction) {
         currentPage += direction;
-        fetch(`/get_page?page=${currentPage}`)
+        fetch(`/api/get_page?page=${currentPage}`)
             .then(response => response.json())
             .then(data => {
                 papers = data.papers;
@@ -157,11 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function downloadJSON() {
         const isAnnotationMode = modeToggle.checked;
-        window.location.href = `/download_json?is_annotation_mode=${isAnnotationMode}`;
+        window.location.href = `/api/download_json?is_annotation_mode=${isAnnotationMode}`;
     }
 
     function viewVerdicts() {
-        fetch('/get_verdicts')
+        fetch('/api/get_verdicts')
             .then(response => response.json())
             .then(verdicts => {
                 const verdictsContainer = document.getElementById('verdictsContainer');
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
             arxivCategories: document.getElementById('arxivCategories').value,
         };
 
-        fetch('/update_settings', {
+        fetch('/api/update_settings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

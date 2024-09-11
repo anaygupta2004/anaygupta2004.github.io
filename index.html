@@ -3,109 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/">
     <title>Anay Gupta</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js" defer></script>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <div id="app" x-data="{ currentPage: window.location.pathname }">
+    <div id="app" x-data="{ currentPage: window.location.pathname }" x-init="
+        $watch('currentPage', (path) => {
+            window.history.pushState(null, '', path);
+        });
+        window.addEventListener('popstate', () => {
+            currentPage = window.location.pathname;
+        });
+    ">
         <!-- Navigation -->
         <nav class="bg-gray-800 text-white p-4">
             <div class="container mx-auto flex justify-between items-center">
-                <a href="/" class="text-xl font-bold">Anay Gupta</a>
+                <a href="/" @click.prevent="currentPage = '/'" class="text-xl font-bold">Anay Gupta</a>
                 <div>
-                    <a href="/" class="mx-2" :class="{ 'underline': currentPage === '/' }">Home</a>
-                    <a href="/arxiv" class="mx-2" :class="{ 'underline': currentPage === '/arxiv' }">Arxiv Paper Finder</a>
+                    <a href="/" @click.prevent="currentPage = '/'" class="mx-2" :class="{ 'underline': currentPage === '/' }">Home</a>
+                    <a href="/arxiv" @click.prevent="currentPage = '/arxiv'" class="mx-2" :class="{ 'underline': currentPage === '/arxiv' }">Arxiv Paper Finder</a>
                 </div>
             </div>
         </nav>
 
         <!-- Home Page Content -->
         <div x-show="currentPage === '/' || currentPage === ''">
-            <div class="grid place-items-center">
-                <div class="max-w-6xl p-6">
-                    <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
-                        <div class="grid place-items-center p-3">
-                            <img src="src/anay.jpg" alt="Anay Gupta" class="rounded-full w-48">
+            <div class="container mx-auto px-4 py-8">
+                <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
+                    <div class="grid place-items-center p-3">
+                        <img src="/src/anay.jpg" alt="Anay Gupta" class="rounded-full w-48">
+                    </div>
+                    <div class="col-span-4">
+                        <h1 class="font-bold text-5xl p-3 grid place-items-center mb-4">Hi. I'm Anay.</h1>
+                        <div class="text-xl p-3 grid place-items-center">
+                            <p>Currently, I'm a student in Atlanta, Georgia, studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also worked on information retrieval at <a href="https://www.delta.com/" class="text-sky-600 hover:text-sky-800">Delta Air Lines</a> and a software framework at <a href="https://www.gene.com/" class="text-sky-600 hover:text-sky-800">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.</p>
                         </div>
-                        <div class="col-span-4">
-                            <div class="font-bold text-5xl p-3 grid place-items-center mb-4">
-                                Hi. I'm Anay.
-                            </div>
-                            <div class="text-xl p-3 grid place-items-center">
-                                <div>
-                                    Currently, I'm a student in Atlanta, Georgia, where I'm studying
-                                    computer science and machine learning at Georgia Tech. My interests span
-                                    from machine learning to software engineering. Last summer, I was an
-                                    intern at <a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I
-                                    worked on new ways to tokenize data for LLMs. I've also had the
-                                    pleasure to work on information retrieval on the Enterprise AI team at
-                                    <a href="https://www.delta.com/" class="text-sky-600 hover:text-sky-800" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a
-                                    software framework on the AI/ML department at
-                                    <a href="https://www.gene.com/" class="text-sky-600 hover:text-sky-800" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy
-                                    playing poker and bouldering.
-                                </div>
-                            </div>
-                            <div class="text-lg text-sky-600 p-3 grid place-items-center">
-                                <div class="space-x-4">
-                                    <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
-                                    <a href="https://github.com/anaygupta2004" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Github]</a>
-                                    <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
-                                    <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
-                                </div>
+                        <div class="text-lg text-sky-600 p-3 grid place-items-center">
+                            <div class="space-x-4">
+                                <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
+                                <a href="https://github.com/anaygupta2004" class="hover:text-sky-800">[Github]</a>
+                                <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800">[LinkedIn]</a>
+                                <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800">[Google Scholar]</a>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-8">
-                        <h2 class="text-3xl font-bold mb-4">What I've been up to:</h2>
-                        <div class="grid grid-cols-2 gap-2">
-                            <div><a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800">Interned at Microsoft Research ↗</a></div>
-                            <div>Summer 24</div>
-                            <div><a href="https://delta.com/" class="text-sky-600 hover:text-sky-800">Interned at Delta Air Lines ↗</a></div>
-                            <div>Spring 24</div>
-                            <div><a href="https://gene.com/" class="text-sky-600 hover:text-sky-800">Interned at Genentech ↗</a></div>
-                            <div>Summer 23</div>
-                            <div><a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-600 hover:text-sky-800">Completed Google's CS Research Mentorship Program ↗</a></div>
-                            <div>Spring 23</div>
-                            <div><a href="https://www.globalchallengesproject.org/" class="text-sky-600 hover:text-sky-800">Attended an AI Safety Workshop ↗</a></div>
-                            <div>March 23</div>
-                            <div><a href="https://goldwaterscholarship.gov/" class="text-sky-600 hover:text-sky-800">Won the Barry Goldwater Scholarship ↗</a></div>
-                            <div>May 22</div>
-                            <div><a href="https://getzlab.org/" class="text-sky-600 hover:text-sky-800">Interned at the Broad Institute of MIT and Harvard ↗</a></div>
-                            <div>Summer 21 & 22</div>
+                </div>
+                
+                <!-- What I've been up to section -->
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold mb-4">What I've been up to:</h2>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div><a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800">Interned at Microsoft Research ↗</a></div>
+                        <div>Summer 24</div>
+                        <div><a href="https://delta.com/" class="text-sky-600 hover:text-sky-800">Interned at Delta Air Lines ↗</a></div>
+                        <div>Spring 24</div>
+                        <div><a href="https://gene.com/" class="text-sky-600 hover:text-sky-800">Interned at Genentech ↗</a></div>
+                        <div>Summer 23</div>
+                        <div><a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-600 hover:text-sky-800">Completed Google's CS Research Mentorship Program ↗</a></div>
+                        <div>Spring 23</div>
+                        <div><a href="https://www.globalchallengesproject.org/" class="text-sky-600 hover:text-sky-800">Attended an AI Safety Workshop ↗</a></div>
+                        <div>March 23</div>
+                        <div><a href="https://goldwaterscholarship.gov/" class="text-sky-600 hover:text-sky-800">Won the Barry Goldwater Scholarship ↗</a></div>
+                        <div>May 22</div>
+                        <div><a href="https://getzlab.org/" class="text-sky-600 hover:text-sky-800">Interned at the Broad Institute of MIT and Harvard ↗</a></div>
+                        <div>Summer 21 & 22</div>
+                    </div>
+                </div>
+
+                <!-- Things I'm interested in section -->
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Things I'm interested in:</h2>
+                    <ul class="list-disc list-inside">
+                        <li>LLMs in biology</li>
+                        <li>LLM capabilities -- can we architect models to be smarter?</li>
+                        <li>Generalist LMs</li>
+                        <li>Distributed systems, data visualization, and cloud computing</li>
+                    </ul>
+                </div>
+
+                <!-- Publications section -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">Publications</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="p-3 grid place-items-center">
+                            <img src="/src/polygraph.jpg" alt="Polygraph Framework" class="w-full h-auto rounded-lg">
                         </div>
-                    </div>
-                    <div class="mb-8">
-                        <h2 class="text-3xl font-bold mb-4">Things I'm interested in:</h2>
-                        <ul class="list-disc list-inside">
-                            <li>LLMs in biology</li>
-                            <li>LLM capabilities -- can we architect models to be smarter?</li>
-                            <li>Generalist LMs</li>
-                            <li>Distributed systems, data visualization, and cloud computing</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="text-3xl font-bold mb-4">Publications</h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                            <div class="p-3 grid place-items-center">
-                                <img src="src/polygraph.jpg" alt="Polygraph Framework" class="w-full h-auto rounded-lg">
+                        <div class="col-span-2 p-3">
+                            <div class="font-bold text-xl">
+                                Polygraph: A Software Framework for the Systematic Assessment of
+                                Synthetic Regulatory DNA Elements
                             </div>
-                            <div class="col-span-2 p-3">
-                                <div class="font-bold text-xl">
-                                    Polygraph: A Software Framework for the Systematic Assessment of
-                                    Synthetic Regulatory DNA Elements
-                                </div>
-                                <div>bioRxiv 2023</div>
-                                <div>
-                                    <strong>Anay Gupta</strong>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen
-                                    Eraslan
-                                </div>
-                                <div class="text-sky-600 mt-2">
-                                    <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800 mr-4" target="_blank" rel="noopener noreferrer">[DOI]</a>
-                                    <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
-                                </div>
+                            <div>bioRxiv 2023</div>
+                            <div>
+                                <strong>Anay Gupta</strong>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen
+                                Eraslan
+                            </div>
+                            <div class="text-sky-600 mt-2">
+                                <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800 mr-4" target="_blank" rel="noopener noreferrer">[DOI]</a>
+                                <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
                             </div>
                         </div>
                     </div>

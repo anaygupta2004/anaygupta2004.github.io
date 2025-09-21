@@ -6,102 +6,221 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Hi! I'm Anay.</title>
   <link rel="icon" href="src/favicon.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .glass-morphism {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+    }
+
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .link-underline {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .link-underline::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 50%;
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    .link-underline:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-card {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .section-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-image {
+      border: 4px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.05) rotate(3deg);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .badge {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+  </style>
 </head>
-<body class="text-lg bg-white">
-  <div class="grid place-items-center">
-    <div class="max-w-6xl p-6">
-      <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
-        <div class="grid place-items-center p-3">
-          <img class="rounded-full w-48" src="src/anay.jpg" alt="Anay Gupta">
+<body class="text-lg p-4 sm:p-8">
+  <div class="grid place-items-center min-h-screen">
+    <div class="max-w-6xl w-full glass-morphism rounded-3xl p-8 sm:p-12 fade-in">
+      <div class="grid grid-cols-1 sm:grid-cols-5 gap-8 mb-12">
+        <div class="grid place-items-center">
+          <img class="rounded-full w-48 profile-image" src="src/anay.jpg" alt="Anay Gupta">
         </div>
 
-        <div class="col-span-4">
-          <div class="font-bold text-5xl p-3 grid place-items-center mb-4">
-            Hi. I'm Anay.
+        <div class="col-span-4 space-y-6">
+          <div class="text-center sm:text-left">
+            <h1 class="font-bold text-5xl sm:text-6xl gradient-text mb-2">
+              Hi. I'm Anay.
+            </h1>
+            <span class="badge">YC F25 Co-Founder</span>
           </div>
-          <div class="text-xl p-3 grid place-items-center">
-            <div>
-              Currently, I'm a student in Atlanta, Georgia, where I'm studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-sky-600 hover:text-sky-800" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on information retrieval on the Enterprise AI team at <a class="text-sky-600 hover:text-sky-800" href="https://www.delta.com/" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a software framework on the AI/ML department at <a class="text-sky-600 hover:text-sky-800" href="https://www.gene.com/" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.
-            </div>
+          <div class="text-lg sm:text-xl text-gray-700 leading-relaxed">
+            Currently, I'm a student in Atlanta, Georgia, where I'm studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-purple-600 hover:text-purple-800 font-medium link-underline" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on information retrieval on the Enterprise AI team at <a class="text-purple-600 hover:text-purple-800 font-medium link-underline" href="https://www.delta.com/" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a software framework on the AI/ML department at <a class="text-purple-600 hover:text-purple-800 font-medium link-underline" href="https://www.gene.com/" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.
           </div>
-          <div class="text-lg text-sky-600 p-3 grid place-items-center">
-            <div class="space-x-4">
-              <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
-              <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
-              <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
-              <a href="src/Anay_Gupta_CV.pdf" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[CV]</a>
-            </div>
+          <div class="flex flex-wrap justify-center sm:justify-start gap-4">
+            <a href="#" id="emailLink" class="px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full hover-lift font-medium" onclick="copyEmail(event)">Email</a>
+            <a href="https://www.linkedin.com/in/a-gupta123/" class="px-6 py-2 border-2 border-purple-600 text-purple-600 rounded-full hover-lift font-medium hover:bg-purple-50" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="px-6 py-2 border-2 border-purple-600 text-purple-600 rounded-full hover-lift font-medium hover:bg-purple-50" target="_blank" rel="noopener noreferrer">Scholar</a>
+            <a href="src/Anay_Gupta_CV.pdf" class="px-6 py-2 border-2 border-purple-600 text-purple-600 rounded-full hover-lift font-medium hover:bg-purple-50" target="_blank" rel="noopener noreferrer">CV</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-10">
+        <h2 class="text-3xl font-bold mb-6 gradient-text">What I've been up to:</h2>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center p-4 rounded-lg hover:bg-purple-50 transition-colors">
+            <a href="https://www.ycombinator.com/" class="text-purple-600 hover:text-purple-800 font-medium link-underline">Co-Founder at Entity (Y Combinator F25) ↗</a>
+            <span class="text-gray-500 text-sm">Fall 25</span>
+          </div>
+          <div class="flex justify-between items-center p-4 rounded-lg hover:bg-purple-50 transition-colors">
+            <a href="https://www.microsoft.com/en-us/research/" class="text-purple-600 hover:text-purple-800 font-medium link-underline">Interned at Microsoft Research ↗</a>
+            <span class="text-gray-500 text-sm">Summer 24</span>
+          </div>
+          <div class="flex justify-between items-center p-4 rounded-lg hover:bg-purple-50 transition-colors">
+            <a href="https://delta.com/" class="text-purple-600 hover:text-purple-800 font-medium link-underline">Interned at Delta Air Lines ↗</a>
+            <span class="text-gray-500 text-sm">Spring 24</span>
+          </div>
+          <div class="flex justify-between items-center p-4 rounded-lg hover:bg-purple-50 transition-colors">
+            <a href="https://gene.com/" class="text-purple-600 hover:text-purple-800 font-medium link-underline">Interned at Genentech ↗</a>
+            <span class="text-gray-500 text-sm">Summer 23</span>
+          </div>
+          <div class="flex justify-between items-center p-4 rounded-lg hover:bg-purple-50 transition-colors">
+            <a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-purple-600 hover:text-purple-800 font-medium link-underline">Completed Google's CS Research Mentorship Program ↗</a>
+            <span class="text-gray-500 text-sm">Spring 23</span>
+          </div>
+          <div class="flex justify-between items-center p-4 rounded-lg hover:bg-purple-50 transition-colors">
+            <a href="https://www.globalchallengesproject.org/" class="text-purple-600 hover:text-purple-800 font-medium link-underline">Attended an AI Safety Workshop ↗</a>
+            <span class="text-gray-500 text-sm">March 23</span>
+          </div>
+          <div class="flex justify-between items-center p-4 rounded-lg hover:bg-purple-50 transition-colors">
+            <a href="https://goldwaterscholarship.gov/" class="text-purple-600 hover:text-purple-800 font-medium link-underline">Won the Barry Goldwater Scholarship ↗</a>
+            <span class="text-gray-500 text-sm">May 22</span>
+          </div>
+          <div class="flex justify-between items-center p-4 rounded-lg hover:bg-purple-50 transition-colors">
+            <a href="https://getzlab.org/" class="text-purple-600 hover:text-purple-800 font-medium link-underline">Interned at the Broad Institute of MIT and Harvard ↗</a>
+            <span class="text-gray-500 text-sm">Summer 21 & 22</span>
           </div>
         </div>
       </div>
 
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-4">What I've been up to:</h2>
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <a href="https://www.ycombinator.com/" class="text-sky-600 hover:text-sky-800">Co-Founder at Entity (Y Combinator F25) ↗</a>
+      <div class="mb-10">
+        <h2 class="text-3xl font-bold mb-6 gradient-text">Things I'm interested in:</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 hover-lift">
+            <span class="text-purple-700 font-medium">🧬 LLMs in biology</span>
           </div>
-          <div>Fall 25</div>
-          <div>
-            <a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800">Interned at Microsoft Research ↗</a>
+          <div class="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 hover-lift">
+            <span class="text-purple-700 font-medium">🧠 LLM capabilities – can we architect models to be smarter?</span>
           </div>
-          <div>Summer 24</div>
-          <div>
-            <a href="https://delta.com/" class="text-sky-600 hover:text-sky-800">Interned at Delta Air Lines ↗</a>
+          <div class="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 hover-lift">
+            <span class="text-purple-700 font-medium">🤖 Generalist LMs</span>
           </div>
-          <div>Spring 24</div>
-          <div>
-            <a href="https://gene.com/" class="text-sky-600 hover:text-sky-800">Interned at Genentech ↗</a>
+          <div class="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 hover-lift">
+            <span class="text-purple-700 font-medium">☁️ Distributed systems, data visualization, and cloud computing</span>
           </div>
-          <div>Summer 23</div>
-          <div>
-            <a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-600 hover:text-sky-800">Completed Google's CS Research Mentorship Program ↗</a>
-          </div>
-          <div>Spring 23</div>
-          <div>
-            <a href="https://www.globalchallengesproject.org/" class="text-sky-600 hover:text-sky-800">Attended an AI Safety Workshop ↗</a>
-          </div>
-          <div>March 23</div>
-          <div>
-            <a href="https://goldwaterscholarship.gov/" class="text-sky-600 hover:text-sky-800">Won the Barry Goldwater Scholarship ↗</a>
-          </div>
-          <div>May 22</div>
-          <div>
-            <a href="https://getzlab.org/" class="text-sky-600 hover:text-sky-800">Interned at the Broad Institute of MIT and Harvard ↗</a>
-          </div>
-          <div>Summer 21 & 22</div>
         </div>
-      </div>
-
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-4">Things I'm interested in:</h2>
-        <ul class="list-disc list-inside space-y-2">
-          <li>LLMs in biology</li>
-          <li>LLM capabilities – can we architect models to be smarter?</li>
-          <li>Generalist LMs</li>
-          <li>Distributed systems, data visualization, and cloud computing</li>
-        </ul>
       </div>
 
       <div>
-        <h2 class="text-3xl font-bold mb-4">Publications</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div class="p-3 grid place-items-center">
-            <img class="w-full h-auto rounded-lg" src="src/polygraph.jpg" alt="Polygraph Framework">
-          </div>
-          <div class="col-span-2 p-3">
-            <div class="font-bold text-xl">
-              Polygraph: A Software Framework for the Systematic Assessment of Synthetic Regulatory DNA Elements
+        <h2 class="text-3xl font-bold mb-6 gradient-text">Publications</h2>
+        <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-6 border border-purple-200 hover-lift">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="grid place-items-center">
+              <img class="w-full h-auto rounded-lg shadow-lg" src="src/polygraph.jpg" alt="Polygraph Framework">
             </div>
-            <div>
-              bioRxiv 2023
-            </div>
-            <div>
-              <b>Anay Gupta</b>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan
-            </div>
-            <div class="text-sky-600 mt-2">
-              <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800 mr-4" target="_blank" rel="noopener noreferrer">[DOI]</a>
-              <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
+            <div class="col-span-2 space-y-3">
+              <div class="font-bold text-xl text-gray-800">
+                Polygraph: A Software Framework for the Systematic Assessment of Synthetic Regulatory DNA Elements
+              </div>
+              <div class="text-gray-600">
+                <span class="badge">bioRxiv 2023</span>
+              </div>
+              <div class="text-gray-700">
+                <b class="text-purple-600">Anay Gupta</b>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan
+              </div>
+              <div class="flex gap-4 mt-4">
+                <a href="https://doi.org/10.1101/2023.11.27.568764" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors" target="_blank" rel="noopener noreferrer">DOI</a>
+                <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="px-4 py-2 border-2 border-purple-600 text-purple-600 rounded-lg hover:bg-purple-50 transition-colors" target="_blank" rel="noopener noreferrer">bioRxiv</a>
+              </div>
             </div>
           </div>
         </div>
@@ -120,16 +239,52 @@
       });
     });
 
-    // Copy email to clipboard
+    // Copy email to clipboard with improved feedback
     function copyEmail(e) {
       e.preventDefault();
       const email = "anay@gatech.edu";
+      const button = e.target;
+
       navigator.clipboard.writeText(email).then(() => {
-        alert("Email copied to clipboard!");
+        const originalText = button.innerText;
+        button.innerText = "✓ Copied!";
+        button.style.background = "linear-gradient(to right, #10b981, #059669)";
+
+        setTimeout(() => {
+          button.innerText = originalText;
+          button.style.background = "";
+        }, 2000);
       }).catch(err => {
         console.error('Failed to copy: ', err);
+        button.innerText = "Click to copy email";
       });
     }
+
+    // Add scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections for animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.mb-10, .mb-12');
+      sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+      });
+    });
   </script>
 </body>
 </html>

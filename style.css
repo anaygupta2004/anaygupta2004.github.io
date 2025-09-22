@@ -1,0 +1,17 @@
+
+body.dark-mode {
+    background-color: #1a202c;
+    color: #cbd5e0;
+}
+
+body.dark-mode a {
+    color: #63b3ed;
+}
+
+body.dark-mode a:hover {
+    color: #90cdf4;
+}
+
+body.dark-mode h2 {
+    color: #e2e8f0;
+}

@@ -6,9 +6,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Hi! I'm Anay.</title>
   <link rel="icon" href="src/favicon.png">
+  <link rel="stylesheet" href="style.css">
   <!-- Test comment for Gemini logging -->
 </head>
 <body class="text-lg bg-white">
+    <div class="absolute top-0 right-0 p-4">
+        <button id="theme-toggle" class="px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-800">
+            Toggle
+        </button>
+    </div>
   <div class="grid place-items-center">
     <div class="max-w-6xl p-6">
       <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
@@ -133,5 +139,6 @@
       });
     }
   </script>
+  <script src="script.js"></script>
 </body>
 </html>

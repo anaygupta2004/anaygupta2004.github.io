@@ -3,76 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal website of Anay Gupta — student and developer interested in ML and software engineering. Contact links, background, interests, and publications.">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Hi! I'm Anay.</title>
-  <link rel="icon" href="src/favicon.png">
+  <link rel="icon" href="src/favicon.png" type="image/png">
   <!-- Test comment for Gemini logging -->
+  <style>
+    /* Skip link visibility */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: fixed;
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      background: #ffffff;
+      color: #000000;
+      padding: 0.5rem 1rem;
+      border: 2px solid #000000;
+      border-radius: 0.25rem;
+      z-index: 1000;
+    }
+    /* Enhanced default focus styles for keyboard users */
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid #0ea5e9; /* sky-500 */
+      outline-offset: 2px;
+    }
+  </style>
+  <meta name="color-scheme" content="light">
 </head>
 <body class="text-lg bg-white">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="grid place-items-center">
-    <div class="max-w-6xl p-6">
+    <main id="main-content" tabindex="-1" class="max-w-6xl p-6">
       <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
         <div class="grid place-items-center p-3">
           <img class="rounded-full w-48" src="src/anay.jpg" alt="Anay Gupta">
         </div>
 
         <div class="col-span-4">
-          <div class="font-bold text-5xl p-3 grid place-items-center mb-4">
+          <h1 class="font-bold text-5xl p-3 grid place-items-center mb-4">
             Hi. I'm Anay.
-          </div>
+          </h1>
           <!-- Test to see if Gemini can see this -->
           <div class="text-xl p-3 grid place-items-center">
             <div>
               Currently, I'm a student in Atlanta, Georgia, where I'm studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-sky-600 hover:text-sky-800" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on information retrieval on the Enterprise AI team at <a class="text-sky-600 hover:text-sky-800" href="https://www.delta.com/" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a software framework on the AI/ML department at <a class="text-sky-600 hover:text-sky-800" href="https://www.gene.com/" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.
             </div>
           </div>
-          <div class="text-lg text-sky-600 p-3 grid place-items-center">
-            <div class="space-x-4">
-              <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
-              <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
-              <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
-              <a href="src/Anay_Gupta_CV.pdf" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[CV]</a>
-            </div>
-          </div>
+          <nav class="text-lg text-sky-700 p-3 grid place-items-center" aria-label="Contact links">
+            <ul class="flex flex-wrap gap-x-4 gap-y-2 items-center">
+              <li>
+                <a href="mailto:anay@gatech.edu" class="hover:text-sky-900 underline underline-offset-4">[Email]</a>
+                <button type="button" id="copyEmailBtn" class="ml-2 px-2 py-1 text-sm border rounded hover:bg-sky-50" aria-label="Copy email address to clipboard">Copy</button>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-900 underline underline-offset-4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)">[LinkedIn]<span class="sr-only"> (opens in a new tab)</span></a>
+              </li>
+              <li>
+                <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-900 underline underline-offset-4" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar (opens in a new tab)">[Google Scholar]<span class="sr-only"> (opens in a new tab)</span></a>
+              </li>
+              <li>
+                <a href="src/Anay_Gupta_CV.pdf" class="hover:text-sky-900 underline underline-offset-4" target="_blank" rel="noopener noreferrer" aria-label="CV PDF (opens in a new tab)">[CV]<span class="sr-only"> (opens in a new tab)</span></a>
+              </li>
+            </ul>
+          </nav>
+          <div id="status" role="status" aria-live="polite" class="sr-only"></div>
         </div>
       </div>
 
       <div class="mb-8">
         <h2 class="text-3xl font-bold mb-4">What I've been up to:</h2>
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <a href="https://www.ycombinator.com/" class="text-sky-600 hover:text-sky-800">Co-Founder at Entity (Y Combinator F25) ↗</a>
-          </div>
-          <div>Fall 25</div>
-          <div>
-            <a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800">Interned at Microsoft Research ↗</a>
-          </div>
-          <div>Summer 24</div>
-          <div>
-            <a href="https://delta.com/" class="text-sky-600 hover:text-sky-800">Interned at Delta Air Lines ↗</a>
-          </div>
-          <div>Spring 24</div>
-          <div>
-            <a href="https://gene.com/" class="text-sky-600 hover:text-sky-800">Interned at Genentech ↗</a>
-          </div>
-          <div>Summer 23</div>
-          <div>
-            <a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-600 hover:text-sky-800">Completed Google's CS Research Mentorship Program ↗</a>
-          </div>
-          <div>Spring 23</div>
-          <div>
-            <a href="https://www.globalchallengesproject.org/" class="text-sky-600 hover:text-sky-800">Attended an AI Safety Workshop ↗</a>
-          </div>
-          <div>March 23</div>
-          <div>
-            <a href="https://goldwaterscholarship.gov/" class="text-sky-600 hover:text-sky-800">Won the Barry Goldwater Scholarship ↗</a>
-          </div>
-          <div>May 22</div>
-          <div>
-            <a href="https://getzlab.org/" class="text-sky-600 hover:text-sky-800">Interned at the Broad Institute of MIT and Harvard ↗</a>
-          </div>
-          <div>Summer 21 & 22</div>
-        </div>
+        <dl class="grid grid-cols-2 gap-2">
+          <dt>
+            <a href="https://www.ycombinator.com/" class="text-sky-700 hover:text-sky-900 underline underline-offset-4">Co-Founder at Entity (Y Combinator F25) <span aria-hidden="true">↗</span></a>
+          </dt>
+          <dd>Fall 25</dd>
+
+          <dt>
+            <a href="https://www.microsoft.com/en-us/research/" class="text-sky-700 hover:text-sky-900 underline underline-offset-4">Interned at Microsoft Research <span aria-hidden="true">↗</span></a>
+          </dt>
+          <dd>Summer 24</dd>
+
+          <dt>
+            <a href="https://delta.com/" class="text-sky-700 hover:text-sky-900 underline underline-offset-4">Interned at Delta Air Lines <span aria-hidden="true">↗</span></a>
+          </dt>
+          <dd>Spring 24</dd>
+
+          <dt>
+            <a href="https://gene.com/" class="text-sky-700 hover:text-sky-900 underline underline-offset-4">Interned at Genentech <span aria-hidden="true">↗</span></a>
+          </dt>
+          <dd>Summer 23</dd>
+
+          <dt>
+            <a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-700 hover:text-sky-900 underline underline-offset-4">Completed Google's CS Research Mentorship Program <span aria-hidden="true">↗</span></a>
+          </dt>
+          <dd>Spring 23</dd>
+
+          <dt>
+            <a href="https://www.globalchallengesproject.org/" class="text-sky-700 hover:text-sky-900 underline underline-offset-4">Attended an AI Safety Workshop <span aria-hidden="true">↗</span></a>
+          </dt>
+          <dd>March 23</dd>
+
+          <dt>
+            <a href="https://goldwaterscholarship.gov/" class="text-sky-700 hover:text-sky-900 underline underline-offset-4">Won the Barry Goldwater Scholarship <span aria-hidden="true">↗</span></a>
+          </dt>
+          <dd>May 22</dd>
+
+          <dt>
+            <a href="https://getzlab.org/" class="text-sky-700 hover:text-sky-900 underline underline-offset-4">Interned at the Broad Institute of MIT and Harvard <span aria-hidden="true">↗</span></a>
+          </dt>
+          <dd>Summer 21 & 22</dd>
+        </dl>
       </div>
 
       <div class="mb-8">
@@ -87,49 +137,81 @@
 
       <div>
         <h2 class="text-3xl font-bold mb-4">Publications</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div class="p-3 grid place-items-center">
-            <img class="w-full h-auto rounded-lg" src="src/polygraph.jpg" alt="Polygraph Framework">
-          </div>
+        <article class="grid grid-cols-1 sm:grid-cols-3 gap-6" aria-labelledby="pub-polygraph-title">
+          <figure class="p-3 grid place-items-center">
+            <img class="w-full h-auto rounded-lg" src="src/polygraph.jpg" alt="Cover image for the Polygraph framework publication">
+          </figure>
           <div class="col-span-2 p-3">
-            <div class="font-bold text-xl">
+            <h3 id="pub-polygraph-title" class="font-bold text-xl">
               Polygraph: A Software Framework for the Systematic Assessment of Synthetic Regulatory DNA Elements
-            </div>
-            <div>
-              bioRxiv 2023
-            </div>
-            <div>
+            </h3>
+            <p>bioRxiv 2023</p>
+            <p>
               <b>Anay Gupta</b>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan
-            </div>
-            <div class="text-sky-600 mt-2">
-              <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800 mr-4" target="_blank" rel="noopener noreferrer">[DOI]</a>
-              <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
+            </p>
+            <div class="text-sky-700 mt-2">
+              <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-900 mr-4 underline underline-offset-4" target="_blank" rel="noopener noreferrer" aria-label="DOI for the Polygraph paper (opens in a new tab)">[DOI]<span class="sr-only"> (opens in a new tab)</span></a>
+              <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-900 underline underline-offset-4" target="_blank" rel="noopener noreferrer" aria-label="bioRxiv full text (opens in a new tab)">[bioRxiv]<span class="sr-only"> (opens in a new tab)</span></a>
             </div>
           </div>
-        </div>
+        </article>
       </div>
-    </div>
+    </main>
   </div>
 
   <script>
-    // Smooth scrolling for anchor links
+    // Smooth scrolling for anchor links (only when target exists)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        const target = document.querySelector(href);
+        if (!href || href === '#' || !target) {
+          return; // let default behavior or other handlers occur
+        }
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+        const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReduced) {
+          target.scrollIntoView();
+        } else {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+        // Move focus to target for screen readers/keyboard users
+        if (typeof target.focus === 'function') {
+          target.focus({ preventScroll: true });
+        }
       });
     });
 
-    // Copy email to clipboard
-    function copyEmail(e) {
-      e.preventDefault();
-      const email = "anay@gatech.edu";
-      navigator.clipboard.writeText(email).then(() => {
-        alert("Email copied to clipboard!");
-      }).catch(err => {
-        console.error('Failed to copy: ', err);
+    // Copy email to clipboard (button)
+    const copyBtn = document.getElementById('copyEmailBtn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        const email = 'anay@gatech.edu';
+        const status = document.getElementById('status');
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(email);
+          } else {
+            // Fallback method
+            const tmp = document.createElement('textarea');
+            tmp.value = email;
+            tmp.setAttribute('readonly', '');
+            tmp.style.position = 'absolute';
+            tmp.style.left = '-9999px';
+            document.body.appendChild(tmp);
+            tmp.select();
+            document.execCommand('copy');
+            document.body.removeChild(tmp);
+          }
+          if (status) {
+            status.textContent = 'Email copied to clipboard';
+          }
+        } catch (err) {
+          console.error('Failed to copy: ', err);
+          if (status) {
+            status.textContent = 'Press Enter on Email link to open mail client';
+          }
+        }
       });
     }
   </script>

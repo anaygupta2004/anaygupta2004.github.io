@@ -4,106 +4,200 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            'fade-in': 'fadeIn 0.8s ease-in-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'float': 'float 3s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
   <title>Hi! I'm Anay.</title>
   <link rel="icon" href="src/favicon.png">
   <!-- Test comment for Gemini logging -->
 </head>
-<body class="text-lg bg-white">
-  <div class="grid place-items-center">
+<body class="text-lg bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 min-h-screen">
+  <div class="grid place-items-center py-8">
     <div class="max-w-6xl p-6">
-      <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
-        <div class="grid place-items-center p-3">
-          <img class="rounded-full w-48" src="src/anay.jpg" alt="Anay Gupta">
-        </div>
-
-        <div class="col-span-4">
-          <div class="font-bold text-5xl p-3 grid place-items-center mb-4">
-            Hi. I'm Anay.
-          </div>
-          <!-- Test to see if Gemini can see this -->
-          <div class="text-xl p-3 grid place-items-center">
-            <div>
-              Currently, I'm a student in Atlanta, Georgia, where I'm studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-sky-600 hover:text-sky-800" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on information retrieval on the Enterprise AI team at <a class="text-sky-600 hover:text-sky-800" href="https://www.delta.com/" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a software framework on the AI/ML department at <a class="text-sky-600 hover:text-sky-800" href="https://www.gene.com/" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.
+      <!-- Hero Section -->
+      <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-8 mb-12 animate-fade-in">
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-8">
+          <div class="grid place-items-center p-3">
+            <div class="relative">
+              <img class="rounded-full w-48 h-48 object-cover shadow-2xl border-4 border-white/50 animate-float" src="src/anay.jpg" alt="Anay Gupta">
+              <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-400/20 to-purple-400/20"></div>
             </div>
           </div>
-          <div class="text-lg text-sky-600 p-3 grid place-items-center">
-            <div class="space-x-4">
-              <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
-              <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
-              <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
-              <a href="src/Anay_Gupta_CV.pdf" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[CV]</a>
+
+          <div class="col-span-4">
+            <div class="font-bold text-6xl bg-gradient-to-r from-slate-800 via-blue-600 to-indigo-600 bg-clip-text text-transparent p-3 grid place-items-center mb-6 animate-slide-up">
+              Hi. I'm Anay.
+            </div>
+            <!-- Test to see if Gemini can see this -->
+            <div class="text-xl text-slate-700 leading-relaxed p-3 grid place-items-center mb-6">
+              <div class="max-w-4xl">
+                Currently, I'm a student in Atlanta, Georgia, where I'm studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200 hover:underline" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on information retrieval on the Enterprise AI team at <a class="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200 hover:underline" href="https://www.delta.com/" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a software framework on the AI/ML department at <a class="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200 hover:underline" href="https://www.gene.com/" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.
+              </div>
+            </div>
+            <div class="text-lg p-3 grid place-items-center">
+              <div class="flex flex-wrap gap-4 justify-center">
+                <a href="#" id="emailLink" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-full hover:from-blue-600 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-medium" onclick="copyEmail(event)">📧 Email</a>
+                <a href="https://www.linkedin.com/in/a-gupta123/" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-medium" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
+                <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-full hover:from-green-600 hover:to-emerald-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-medium" target="_blank" rel="noopener noreferrer">🎓 Scholar</a>
+                <a href="src/Anay_Gupta_CV.pdf" class="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 rounded-full hover:from-purple-600 hover:to-pink-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-medium" target="_blank" rel="noopener noreferrer">📄 CV</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Section -->
+      <div class="mb-12">
+        <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-slate-800 to-blue-600 bg-clip-text text-transparent text-center">What I've been up to</h2>
+        <div class="space-y-4">
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <a href="https://www.ycombinator.com/" class="text-xl font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200 hover:underline" target="_blank" rel="noopener noreferrer">Co-Founder at Entity (Y Combinator F25) ↗</a>
+              </div>
+              <div class="bg-gradient-to-r from-orange-400 to-red-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">Fall 25</div>
+            </div>
+          </div>
+          
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <a href="https://www.microsoft.com/en-us/research/" class="text-xl font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200 hover:underline" target="_blank" rel="noopener noreferrer">Interned at Microsoft Research ↗</a>
+              </div>
+              <div class="bg-gradient-to-r from-blue-400 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">Summer 24</div>
+            </div>
+          </div>
+          
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <a href="https://delta.com/" class="text-xl font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200 hover:underline" target="_blank" rel="noopener noreferrer">Interned at Delta Air Lines ↗</a>
+              </div>
+              <div class="bg-gradient-to-r from-red-400 to-red-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">Spring 24</div>
+            </div>
+          </div>
+          
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <a href="https://gene.com/" class="text-xl font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200 hover:underline" target="_blank" rel="noopener noreferrer">Interned at Genentech ↗</a>
+              </div>
+              <div class="bg-gradient-to-r from-green-400 to-green-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">Summer 23</div>
+            </div>
+          </div>
+          
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-xl font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200 hover:underline" target="_blank" rel="noopener noreferrer">Completed Google's CS Research Mentorship Program ↗</a>
+              </div>
+              <div class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">Spring 23</div>
+            </div>
+          </div>
+          
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <a href="https://www.globalchallengesproject.org/" class="text-xl font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200 hover:underline" target="_blank" rel="noopener noreferrer">Attended an AI Safety Workshop ↗</a>
+              </div>
+              <div class="bg-gradient-to-r from-purple-400 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">March 23</div>
+            </div>
+          </div>
+          
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <a href="https://goldwaterscholarship.gov/" class="text-xl font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200 hover:underline" target="_blank" rel="noopener noreferrer">Won the Barry Goldwater Scholarship ↗</a>
+              </div>
+              <div class="bg-gradient-to-r from-indigo-400 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">May 22</div>
+            </div>
+          </div>
+          
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <a href="https://getzlab.org/" class="text-xl font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200 hover:underline" target="_blank" rel="noopener noreferrer">Interned at the Broad Institute of MIT and Harvard ↗</a>
+              </div>
+              <div class="bg-gradient-to-r from-teal-400 to-teal-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md">Summer 21 & 22</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-4">What I've been up to:</h2>
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <a href="https://www.ycombinator.com/" class="text-sky-600 hover:text-sky-800">Co-Founder at Entity (Y Combinator F25) ↗</a>
+      <!-- Interests Section -->
+      <div class="mb-12">
+        <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-slate-800 to-blue-600 bg-clip-text text-transparent text-center">Things I'm interested in</h2>
+        <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-6 border border-blue-200/50 hover:shadow-md transition-all duration-300">
+              <div class="text-2xl mb-3">🧬</div>
+              <div class="text-lg font-semibold text-slate-800">LLMs in biology</div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-50 to-pink-100 rounded-xl p-6 border border-purple-200/50 hover:shadow-md transition-all duration-300">
+              <div class="text-2xl mb-3">🧠</div>
+              <div class="text-lg font-semibold text-slate-800">LLM capabilities – can we architect models to be smarter?</div>
+            </div>
+            <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-6 border border-green-200/50 hover:shadow-md transition-all duration-300">
+              <div class="text-2xl mb-3">🎯</div>
+              <div class="text-lg font-semibold text-slate-800">Generalist LMs</div>
+            </div>
+            <div class="bg-gradient-to-br from-orange-50 to-red-100 rounded-xl p-6 border border-orange-200/50 hover:shadow-md transition-all duration-300">
+              <div class="text-2xl mb-3">☁️</div>
+              <div class="text-lg font-semibold text-slate-800">Distributed systems, data visualization, and cloud computing</div>
+            </div>
           </div>
-          <div>Fall 25</div>
-          <div>
-            <a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800">Interned at Microsoft Research ↗</a>
-          </div>
-          <div>Summer 24</div>
-          <div>
-            <a href="https://delta.com/" class="text-sky-600 hover:text-sky-800">Interned at Delta Air Lines ↗</a>
-          </div>
-          <div>Spring 24</div>
-          <div>
-            <a href="https://gene.com/" class="text-sky-600 hover:text-sky-800">Interned at Genentech ↗</a>
-          </div>
-          <div>Summer 23</div>
-          <div>
-            <a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-600 hover:text-sky-800">Completed Google's CS Research Mentorship Program ↗</a>
-          </div>
-          <div>Spring 23</div>
-          <div>
-            <a href="https://www.globalchallengesproject.org/" class="text-sky-600 hover:text-sky-800">Attended an AI Safety Workshop ↗</a>
-          </div>
-          <div>March 23</div>
-          <div>
-            <a href="https://goldwaterscholarship.gov/" class="text-sky-600 hover:text-sky-800">Won the Barry Goldwater Scholarship ↗</a>
-          </div>
-          <div>May 22</div>
-          <div>
-            <a href="https://getzlab.org/" class="text-sky-600 hover:text-sky-800">Interned at the Broad Institute of MIT and Harvard ↗</a>
-          </div>
-          <div>Summer 21 & 22</div>
         </div>
       </div>
 
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-4">Things I'm interested in:</h2>
-        <ul class="list-disc list-inside space-y-2">
-          <li>LLMs in biology</li>
-          <li>LLM capabilities – can we architect models to be smarter?</li>
-          <li>Generalist LMs</li>
-          <li>Distributed systems, data visualization, and cloud computing</li>
-        </ul>
-      </div>
-
-      <div>
-        <h2 class="text-3xl font-bold mb-4">Publications</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div class="p-3 grid place-items-center">
-            <img class="w-full h-auto rounded-lg" src="src/polygraph.jpg" alt="Polygraph Framework">
-          </div>
-          <div class="col-span-2 p-3">
-            <div class="font-bold text-xl">
-              Polygraph: A Software Framework for the Systematic Assessment of Synthetic Regulatory DNA Elements
+      <!-- Publications Section -->
+      <div class="mb-12">
+        <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-slate-800 to-blue-600 bg-clip-text text-transparent text-center">Publications</h2>
+        <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-8 hover:shadow-xl transition-all duration-300">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-1 flex justify-center">
+              <div class="relative">
+                <img class="w-full max-w-sm h-auto rounded-xl shadow-lg border border-white/50" src="src/polygraph.jpg" alt="Polygraph Framework">
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-400/10 to-purple-400/10"></div>
+              </div>
             </div>
-            <div>
-              bioRxiv 2023
-            </div>
-            <div>
-              <b>Anay Gupta</b>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan
-            </div>
-            <div class="text-sky-600 mt-2">
-              <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800 mr-4" target="_blank" rel="noopener noreferrer">[DOI]</a>
-              <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
+            <div class="lg:col-span-2 space-y-4">
+              <div class="font-bold text-2xl text-slate-800 leading-tight">
+                Polygraph: A Software Framework for the Systematic Assessment of Synthetic Regulatory DNA Elements
+              </div>
+              <div class="bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium inline-block">
+                bioRxiv 2023
+              </div>
+              <div class="text-lg text-slate-700">
+                <span class="font-semibold text-blue-600">Anay Gupta</span>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan
+              </div>
+              <div class="flex flex-wrap gap-3 mt-4">
+                <a href="https://doi.org/10.1101/2023.11.27.568764" class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-1 font-medium" target="_blank" rel="noopener noreferrer">📄 DOI</a>
+                <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-4 py-2 rounded-full hover:from-purple-600 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-1 font-medium" target="_blank" rel="noopener noreferrer">📚 bioRxiv</a>
+              </div>
             </div>
           </div>
         </div>
@@ -122,16 +216,57 @@
       });
     });
 
-    // Copy email to clipboard
+    // Copy email to clipboard with better UX
     function copyEmail(e) {
       e.preventDefault();
       const email = "anay@gatech.edu";
+      const button = e.target;
+      const originalText = button.textContent;
+      
       navigator.clipboard.writeText(email).then(() => {
-        alert("Email copied to clipboard!");
+        button.textContent = "✅ Copied!";
+        button.classList.add('bg-green-500', 'hover:bg-green-600');
+        button.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-indigo-600', 'hover:from-blue-600', 'hover:to-indigo-700');
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('bg-green-500', 'hover:bg-green-600');
+          button.classList.add('bg-gradient-to-r', 'from-blue-500', 'to-indigo-600', 'hover:from-blue-600', 'hover:to-indigo-700');
+        }, 2000);
       }).catch(err => {
         console.error('Failed to copy: ', err);
+        button.textContent = "❌ Failed";
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 2000);
       });
     }
+
+    // Add scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards for scroll animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.bg-white\\/70');
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(card);
+      });
+    });
   </script>
 </body>
 </html>

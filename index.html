@@ -6,6 +6,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Hi! I'm Anay.</title>
   <link rel="icon" href="src/favicon.png">
+  <link rel="stylesheet" href="src/spinner.css">
   <!-- Test comment for Gemini logging -->
 </head>
 <body class="text-lg bg-white">
@@ -111,7 +112,11 @@
     </div>
   </div>
 
+  <script src="src/spinner.js"></script>
   <script>
+    // Show spinner on initial page load
+    showSpinner('Loading page...');
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -122,16 +127,51 @@
       });
     });
 
-    // Copy email to clipboard
-    function copyEmail(e) {
+    // Copy email to clipboard with loading indicator
+    async function copyEmail(e) {
       e.preventDefault();
+
+      // Show spinner briefly
+      showSpinner('Copying email...');
+
       const email = "anay@gatech.edu";
-      navigator.clipboard.writeText(email).then(() => {
+
+      try {
+        await navigator.clipboard.writeText(email);
+        // Hide spinner before showing alert
+        hideSpinner();
         alert("Email copied to clipboard!");
-      }).catch(err => {
+      } catch (err) {
+        hideSpinner();
         console.error('Failed to copy: ', err);
-      });
+        alert("Failed to copy email. Please try again.");
+      }
     }
+
+    // Add loading states for external links
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add click handlers to external links
+      const externalLinks = document.querySelectorAll('a[href^="http"]');
+      externalLinks.forEach(link => {
+        if (!link.hasAttribute('data-no-spinner')) {
+          link.addEventListener('click', () => {
+            // Show spinner briefly when navigating to external links
+            showSpinner('Opening link...');
+            setTimeout(hideSpinner, 800);
+          });
+        }
+      });
+
+      // Simulate content loading for demonstration
+      // This can be removed or modified based on actual dynamic content needs
+      if (window.location.hash === '#demo-spinner') {
+        showSpinner('Loading demo content...');
+        setTimeout(() => {
+          hideSpinner();
+          alert('Demo content loaded!');
+        }, 2000);
+      }
+    });
   </script>
 </body>
 </html>

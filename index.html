@@ -108,6 +108,74 @@
           </div>
         </div>
       </div>
+
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
+        <div class="max-w-2xl">
+          <form id="contactForm" class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+                placeholder="Your full name"
+              >
+              <div id="nameError" class="text-red-500 text-sm mt-1 hidden"></div>
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+                placeholder="your.email@example.com"
+              >
+              <div id="emailError" class="text-red-500 text-sm mt-1 hidden"></div>
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                required 
+                rows="5"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors resize-vertical"
+                placeholder="Tell me about your project, collaboration, or just say hello!"
+              ></textarea>
+              <div id="messageError" class="text-red-500 text-sm mt-1 hidden"></div>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="w-full bg-sky-600 text-white py-3 px-6 rounded-lg hover:bg-sky-700 focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition-colors font-medium"
+            >
+              Send Message
+            </button>
+          </form>
+          
+          <div id="successMessage" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-medium text-green-800">
+                  Thank you! Your message has been sent successfully. I'll get back to you soon.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -131,6 +199,86 @@
       }).catch(err => {
         console.error('Failed to copy: ', err);
       });
+    }
+
+    // Contact form handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Clear previous errors
+      clearErrors();
+      
+      // Get form data
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      let isValid = true;
+      
+      // Validate name
+      if (!name) {
+        showError('nameError', 'Name is required');
+        isValid = false;
+      } else if (name.length < 2) {
+        showError('nameError', 'Name must be at least 2 characters long');
+        isValid = false;
+      }
+      
+      // Validate email
+      if (!email) {
+        showError('emailError', 'Email is required');
+        isValid = false;
+      } else if (!isValidEmail(email)) {
+        showError('emailError', 'Please enter a valid email address');
+        isValid = false;
+      }
+      
+      // Validate message
+      if (!message) {
+        showError('messageError', 'Message is required');
+        isValid = false;
+      } else if (message.length < 10) {
+        showError('messageError', 'Message must be at least 10 characters long');
+        isValid = false;
+      }
+      
+      if (isValid) {
+        // Simulate form submission (in a real implementation, you would send to a server)
+        setTimeout(() => {
+          showSuccessMessage();
+          document.getElementById('contactForm').reset();
+        }, 500);
+      }
+    });
+    
+    function showError(errorId, message) {
+      const errorElement = document.getElementById(errorId);
+      errorElement.textContent = message;
+      errorElement.classList.remove('hidden');
+    }
+    
+    function clearErrors() {
+      const errorElements = ['nameError', 'emailError', 'messageError'];
+      errorElements.forEach(id => {
+        const errorElement = document.getElementById(id);
+        errorElement.classList.add('hidden');
+        errorElement.textContent = '';
+      });
+    }
+    
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+    
+    function showSuccessMessage() {
+      const successMessage = document.getElementById('successMessage');
+      successMessage.classList.remove('hidden');
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        successMessage.classList.add('hidden');
+      }, 5000);
     }
   </script>
 </body>

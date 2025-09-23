@@ -7,8 +7,71 @@
   <title>Hi! I'm Anay.</title>
   <link rel="icon" href="src/favicon.png">
   <!-- Test comment for Gemini logging -->
+  <style>
+    /* Dark mode styles */
+    body.dark {
+      background-color: #1a1a1a;
+      color: #e5e5e5;
+    }
+
+    body.dark a {
+      color: #60a5fa;
+    }
+
+    body.dark a:hover {
+      color: #93bbfc;
+    }
+
+    /* Dark mode toggle button styles */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #f3f4f6;
+      border: 2px solid #d1d5db;
+      border-radius: 50px;
+      padding: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      background-color: #e5e7eb;
+    }
+
+    body.dark .theme-toggle {
+      background-color: #374151;
+      border-color: #4b5563;
+    }
+
+    body.dark .theme-toggle:hover {
+      background-color: #4b5563;
+    }
+
+    .theme-toggle-icon {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    /* Smooth transition for theme changes */
+    body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  </style>
 </head>
 <body class="text-lg bg-white">
+  <!-- Dark mode toggle button -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <svg class="theme-toggle-icon" id="sunIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+    <svg class="theme-toggle-icon" id="moonIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+    </svg>
+  </button>
+
   <div class="grid place-items-center">
     <div class="max-w-6xl p-6">
       <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
@@ -112,6 +175,38 @@
   </div>
 
   <script>
+    // Dark mode functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const body = document.body;
+
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Apply the saved theme or system preference
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      body.classList.add('dark');
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    }
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+
+      if (body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      } else {
+        localStorage.setItem('theme', 'light');
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      }
+    });
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {

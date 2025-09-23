@@ -111,7 +111,14 @@
     </div>
   </div>
 
+  <footer class="bg-gray-800 text-white text-center p-4">
+    <p>&copy; <span id="year"></span> Anay Gupta</p>
+  </footer>
+
   <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {

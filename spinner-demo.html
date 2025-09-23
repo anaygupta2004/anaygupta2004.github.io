@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Loading Spinner Demo</title>
+  <link rel="icon" href="src/favicon.png">
+  <link rel="stylesheet" href="src/spinner.css">
+</head>
+<body class="text-lg bg-gray-50 min-h-screen">
+  <div class="container mx-auto p-8">
+    <h1 class="text-4xl font-bold mb-8 text-center">Loading Spinner Demo</h1>
+
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Basic Spinner Controls</h2>
+        <div class="space-y-4">
+          <div>
+            <button onclick="showSpinner()" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors">
+              Show Spinner (Default)
+            </button>
+            <button onclick="hideSpinner()" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 transition-colors ml-2">
+              Hide Spinner
+            </button>
+          </div>
+
+          <div>
+            <button onclick="showSpinner('Processing data...')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition-colors">
+              Show with Custom Message
+            </button>
+          </div>
+
+          <div>
+            <button onclick="spinner.showWithTimeout(3000, 'Auto-hide in 3 seconds...')" class="bg-purple-500 text-white px-6 py-2 rounded hover:bg-purple-600 transition-colors">
+              Show with Auto-Hide (3s)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Simulated Actions</h2>
+        <div class="space-y-4">
+          <div>
+            <button onclick="simulateApiCall()" class="bg-indigo-500 text-white px-6 py-2 rounded hover:bg-indigo-600 transition-colors">
+              Simulate API Call (2s)
+            </button>
+          </div>
+
+          <div>
+            <button onclick="simulateFileUpload()" class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition-colors">
+              Simulate File Upload (4s)
+            </button>
+          </div>
+
+          <div>
+            <button onclick="simulateFormSubmit()" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition-colors">
+              Simulate Form Submit (1.5s)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Test Form</h2>
+        <form id="testForm" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-2">Name</label>
+            <input type="text" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your name">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2">Email</label>
+            <input type="email" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email">
+          </div>
+          <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors">
+            Submit Form
+          </button>
+        </form>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-semibold mb-4">Usage Examples</h2>
+        <div class="bg-gray-100 p-4 rounded">
+          <pre class="text-sm overflow-x-auto"><code>// Basic usage
+showSpinner();           // Show with default message
+hideSpinner();           // Hide spinner
+
+// Custom message
+showSpinner('Loading user data...');
+
+// Auto-hide after duration
+spinner.showWithTimeout(3000, 'Please wait...');
+
+// Wrap async operations
+async function fetchData() {
+  await spinner.withSpinner(async () => {
+    const response = await fetch('/api/data');
+    return response.json();
+  }, 'Fetching data...');
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/spinner.js"></script>
+  <script>
+    // Simulate API call
+    async function simulateApiCall() {
+      showSpinner('Fetching data from API...');
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      hideSpinner();
+      alert('API call completed!');
+    }
+
+    // Simulate file upload
+    async function simulateFileUpload() {
+      showSpinner('Uploading file...');
+      await new Promise(resolve => setTimeout(resolve, 4000));
+      hideSpinner();
+      alert('File uploaded successfully!');
+    }
+
+    // Simulate form submit
+    async function simulateFormSubmit() {
+      await spinner.withSpinner(
+        () => new Promise(resolve => setTimeout(resolve, 1500)),
+        'Submitting form...'
+      );
+      alert('Form submitted!');
+    }
+
+    // Handle test form submission
+    document.getElementById('testForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      showSpinner('Processing form data...');
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      hideSpinner();
+      alert('Form processed successfully!');
+    });
+  </script>
+</body>
+</html>

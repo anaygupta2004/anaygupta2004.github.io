@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found | Anay Gupta</title>
+  <link rel="icon" href="src/favicon.png">
+</head>
+<body class="text-lg bg-white">
+  <div class="grid place-items-center min-h-screen">
+    <div class="max-w-4xl p-6 text-center">
+      <!-- Profile Image -->
+      <div class="mb-8">
+        <img class="rounded-full w-32 h-32 mx-auto mb-6" src="src/anay.jpg" alt="Anay Gupta">
+      </div>
+
+      <!-- 404 Error Message -->
+      <div class="mb-8">
+        <h1 class="text-8xl font-bold text-gray-300 mb-4">404</h1>
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Oops! Page Not Found</h2>
+        <p class="text-xl text-gray-600 mb-6">
+          The page you're looking for seems to have wandered off into the digital void. 
+          Don't worry, even the best explorers sometimes take a wrong turn!
+        </p>
+      </div>
+
+      <!-- Navigation Options -->
+      <div class="mb-8">
+        <div class="space-y-4">
+          <a href="/" class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
+            🏠 Go Home
+          </a>
+          <div class="text-gray-500">or</div>
+          <div class="space-x-4">
+            <a href="/#publications" class="text-sky-600 hover:text-sky-800 font-medium">View Publications</a>
+            <span class="text-gray-400">•</span>
+            <a href="/#experience" class="text-sky-600 hover:text-sky-800 font-medium">See Experience</a>
+            <span class="text-gray-400">•</span>
+            <a href="src/Anay_Gupta_CV.pdf" class="text-sky-600 hover:text-sky-800 font-medium" target="_blank" rel="noopener noreferrer">Download CV</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fun Message -->
+      <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <p class="text-gray-700 italic">
+          "In the world of coding, 404 errors are just the universe's way of saying 'plot twist!' 
+          Even the best algorithms sometimes return null. 😄"
+        </p>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="text-lg text-sky-600">
+        <div class="space-x-4">
+          <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
+          <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
+        </div>
+      </div>
+
+      <!-- Back Button -->
+      <div class="mt-8">
+        <button onclick="history.back()" class="text-gray-500 hover:text-gray-700 text-sm underline">
+          ← Go Back
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Copy email to clipboard (same functionality as main page)
+    function copyEmail(e) {
+      e.preventDefault();
+      const email = "anay@gatech.edu";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied to clipboard!");
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Add some subtle animation to the 404 number
+    document.addEventListener('DOMContentLoaded', function() {
+      const errorNumber = document.querySelector('h1');
+      errorNumber.style.transition = 'transform 0.3s ease';
+      
+      errorNumber.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+      });
+      
+      errorNumber.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>

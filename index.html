@@ -85,7 +85,7 @@
         </ul>
       </div>
 
-      <div>
+      <div class="mb-8">
         <h2 class="text-3xl font-bold mb-4">Publications</h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div class="p-3 grid place-items-center">
@@ -106,6 +106,67 @@
               <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
+        <div class="bg-gray-50 rounded-lg p-6">
+          <form id="contactForm" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
+                <input type="text" id="name" name="name" required
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent"
+                       placeholder="Your name">
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                <input type="email" id="email" name="email" required
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent"
+                       placeholder="your.email@example.com">
+                <span id="emailError" class="text-red-500 text-sm hidden">Please enter a valid email address</span>
+              </div>
+            </div>
+
+            <div>
+              <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject *</label>
+              <input type="text" id="subject" name="subject" required
+                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent"
+                     placeholder="What's this about?">
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message *</label>
+              <textarea id="message" name="message" rows="5" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent"
+                        placeholder="Your message here..."></textarea>
+            </div>
+
+            <!-- Honeypot field for spam protection -->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <!-- Simple math challenge for spam protection -->
+            <div>
+              <label for="challenge" class="block text-sm font-medium text-gray-700 mb-1">
+                Security Question: What is <span id="num1"></span> + <span id="num2"></span>? *
+              </label>
+              <input type="number" id="challenge" name="challenge" required
+                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent"
+                     placeholder="Enter the sum">
+              <span id="challengeError" class="text-red-500 text-sm hidden">Please solve the math question correctly</span>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <button type="submit" id="submitBtn"
+                      class="bg-sky-600 text-white px-6 py-2 rounded-md hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2 transition-colors duration-200">
+                Send Message
+              </button>
+              <div id="formStatus" class="text-sm"></div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -132,6 +193,140 @@
         console.error('Failed to copy: ', err);
       });
     }
+
+    // Contact form functionality
+    let num1, num2, correctAnswer;
+
+    // Initialize math challenge
+    function initMathChallenge() {
+      num1 = Math.floor(Math.random() * 10) + 1;
+      num2 = Math.floor(Math.random() * 10) + 1;
+      correctAnswer = num1 + num2;
+
+      const num1Elem = document.getElementById('num1');
+      const num2Elem = document.getElementById('num2');
+
+      if (num1Elem && num2Elem) {
+        num1Elem.textContent = num1;
+        num2Elem.textContent = num2;
+      }
+    }
+
+    // Validate email format
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    // Show status message
+    function showStatus(message, isSuccess) {
+      const statusDiv = document.getElementById('formStatus');
+      statusDiv.textContent = message;
+      statusDiv.className = isSuccess
+        ? 'text-sm text-green-600 font-medium'
+        : 'text-sm text-red-600 font-medium';
+
+      // Clear message after 5 seconds
+      setTimeout(() => {
+        statusDiv.textContent = '';
+        statusDiv.className = 'text-sm';
+      }, 5000);
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      initMathChallenge();
+
+      const contactForm = document.getElementById('contactForm');
+      const emailInput = document.getElementById('email');
+      const challengeInput = document.getElementById('challenge');
+      const submitBtn = document.getElementById('submitBtn');
+
+      // Real-time email validation
+      if (emailInput) {
+        emailInput.addEventListener('blur', function() {
+          const emailError = document.getElementById('emailError');
+          if (this.value && !validateEmail(this.value)) {
+            emailError.classList.remove('hidden');
+          } else {
+            emailError.classList.add('hidden');
+          }
+        });
+      }
+
+      // Form submission
+      if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+
+          // Get form data
+          const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value,
+            challenge: parseInt(document.getElementById('challenge').value),
+            website: document.querySelector('input[name="website"]').value // Honeypot
+          };
+
+          // Validate honeypot (should be empty)
+          if (formData.website) {
+            showStatus('Spam detected. Please try again.', false);
+            return;
+          }
+
+          // Validate email
+          if (!validateEmail(formData.email)) {
+            document.getElementById('emailError').classList.remove('hidden');
+            return;
+          }
+
+          // Validate math challenge
+          if (formData.challenge !== correctAnswer) {
+            document.getElementById('challengeError').classList.remove('hidden');
+            return;
+          } else {
+            document.getElementById('challengeError').classList.add('hidden');
+          }
+
+          // Disable submit button
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending...';
+          submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+          try {
+            // Since this is a static site, we'll simulate form submission
+            // In a real implementation, you would send this to a backend service
+            // Options include: Formspree, Netlify Forms, EmailJS, or custom backend
+
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // For demonstration, we'll create a mailto link as fallback
+            const mailtoLink = `mailto:anay@gatech.edu?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`From: ${formData.name} (${formData.email})\n\n${formData.message}`)}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            // Show success message
+            showStatus('Message sent successfully! Your email client should open with the message.', true);
+
+            // Reset form
+            contactForm.reset();
+            initMathChallenge();
+
+          } catch (error) {
+            console.error('Error sending message:', error);
+            showStatus('Failed to send message. Please try again or email directly.', false);
+          } finally {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>

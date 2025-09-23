@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found | Anay Gupta</title>
+  <link rel="icon" href="src/favicon.png">
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .error-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .blob-1 {
+      top: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: #0ea5e9;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .blob-2 {
+      bottom: -100px;
+      right: -100px;
+      width: 350px;
+      height: 350px;
+      background: #0284c7;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+
+    .blob-3 {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 250px;
+      height: 250px;
+      background: #7dd3fc;
+      animation: float 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container relative overflow-hidden">
+    <!-- Animated background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Main content -->
+    <div class="relative z-10 max-w-2xl mx-auto text-center">
+      <!-- 404 Number with animation -->
+      <div class="fade-in">
+        <h1 class="text-9xl font-bold gradient-text mb-4 float-animation">404</h1>
+      </div>
+
+      <!-- Error message -->
+      <div class="fade-in" style="animation-delay: 0.2s; opacity: 0;">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Oops! Page Not Found</h2>
+        <p class="text-xl text-gray-600 mb-8">
+          Looks like you've wandered into uncharted territory. The page you're looking for doesn't exist or may have been moved.
+        </p>
+      </div>
+
+      <!-- Fun illustration using emoji -->
+      <div class="fade-in text-6xl mb-8" style="animation-delay: 0.4s; opacity: 0;">
+        <span class="inline-block transform hover:scale-110 transition-transform">🔍</span>
+        <span class="inline-block mx-4 transform hover:rotate-12 transition-transform">🗺️</span>
+        <span class="inline-block transform hover:scale-110 transition-transform">❓</span>
+      </div>
+
+      <!-- Navigation options -->
+      <div class="fade-in space-y-4" style="animation-delay: 0.6s; opacity: 0;">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="inline-block px-8 py-3 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+            Go Back Home
+          </a>
+          <button onclick="history.back()" class="inline-block px-8 py-3 bg-white text-sky-600 font-semibold rounded-lg border-2 border-sky-600 hover:bg-sky-50 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+            Previous Page
+          </button>
+        </div>
+
+        <!-- Quick links -->
+        <div class="mt-8 pt-8 border-t border-gray-200">
+          <p class="text-gray-600 mb-4">Or check out these links:</p>
+          <div class="flex flex-wrap justify-center gap-4 text-sky-600">
+            <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800 hover:underline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <span class="text-gray-400">•</span>
+            <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800 hover:underline" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <span class="text-gray-400">•</span>
+            <a href="src/Anay_Gupta_CV.pdf" class="hover:text-sky-800 hover:underline" target="_blank" rel="noopener noreferrer">CV</a>
+            <span class="text-gray-400">•</span>
+            <a href="#" onclick="copyEmail(event)" class="hover:text-sky-800 hover:underline">Email</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fun fact or quote -->
+      <div class="fade-in mt-12 p-4 bg-white bg-opacity-80 rounded-lg shadow-md" style="animation-delay: 0.8s; opacity: 0;">
+        <p class="text-gray-600 italic">
+          "Not all those who wander are lost... but this page definitely is!"
+        </p>
+        <p class="text-sm text-gray-500 mt-2">- Error 404</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Copy email to clipboard (same function as main site)
+    function copyEmail(e) {
+      e.preventDefault();
+      const email = "anay@gatech.edu";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied to clipboard!");
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Add a fun easter egg: konami code
+    let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIndex = 0;
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+          activateEasterEgg();
+          konamiIndex = 0;
+        }
+      } else {
+        konamiIndex = 0;
+      }
+    });
+
+    function activateEasterEgg() {
+      document.body.style.transition = 'transform 1s';
+      document.body.style.transform = 'rotate(360deg)';
+      setTimeout(() => {
+        document.body.style.transform = 'rotate(0deg)';
+        alert("🎮 Konami Code Activated! You found the secret!");
+      }, 1000);
+    }
+
+    // Random motivational messages
+    const messages = [
+      "Not all those who wander are lost... but this page definitely is!",
+      "404: Page not found, but your potential is unlimited!",
+      "This page took a coffee break. It might be back... or not.",
+      "Even the best explorers sometimes take wrong turns.",
+      "404: The page you seek lies in another castle."
+    ];
+
+    // Change the quote randomly on load
+    window.addEventListener('load', () => {
+      const quoteElement = document.querySelector('.italic');
+      if (quoteElement) {
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        quoteElement.textContent = `"${randomMessage}"`;
+      }
+    });
+  </script>
+</body>
+</html>

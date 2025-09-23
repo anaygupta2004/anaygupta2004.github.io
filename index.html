@@ -7,8 +7,63 @@
   <title>Hi! I'm Anay.</title>
   <link rel="icon" href="src/favicon.png">
   <!-- Test comment for Gemini logging -->
+  
+  <!-- Loading Spinner Styles -->
+  <style>
+    .spinner-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .spinner-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #e5e7eb;
+      border-top: 4px solid #0ea5e9;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      .spinner-overlay {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      
+      .spinner {
+        border: 4px solid #374151;
+        border-top: 4px solid #0ea5e9;
+      }
+    }
+  </style>
 </head>
 <body class="text-lg bg-white">
+  <!-- Loading Spinner -->
+  <div id="spinnerOverlay" class="spinner-overlay" role="status" aria-label="Loading content">
+    <div class="spinner" aria-hidden="true"></div>
+  </div>
+  
   <div class="grid place-items-center">
     <div class="max-w-6xl p-6">
       <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
@@ -112,6 +167,34 @@
   </div>
 
   <script>
+    // Loading Spinner Functions
+    function showSpinner() {
+      const spinner = document.getElementById('spinnerOverlay');
+      if (spinner) {
+        spinner.classList.add('show');
+      }
+    }
+
+    function hideSpinner() {
+      const spinner = document.getElementById('spinnerOverlay');
+      if (spinner) {
+        spinner.classList.remove('show');
+      }
+    }
+
+    // Show spinner on page load
+    window.addEventListener('load', function() {
+      // Simulate loading time for better UX demonstration
+      setTimeout(() => {
+        hideSpinner();
+      }, 1000);
+    });
+
+    // Show spinner immediately when page starts loading
+    document.addEventListener('DOMContentLoaded', function() {
+      showSpinner();
+    });
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -122,16 +205,33 @@
       });
     });
 
-    // Copy email to clipboard
+    // Copy email to clipboard with spinner
     function copyEmail(e) {
       e.preventDefault();
+      showSpinner();
+      
       const email = "anay@gatech.edu";
       navigator.clipboard.writeText(email).then(() => {
-        alert("Email copied to clipboard!");
+        setTimeout(() => {
+          hideSpinner();
+          alert("Email copied to clipboard!");
+        }, 500);
       }).catch(err => {
+        hideSpinner();
         console.error('Failed to copy: ', err);
       });
     }
+
+    // Add spinner to external link clicks for better UX
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+      link.addEventListener('click', function() {
+        showSpinner();
+        // Hide spinner after a short delay (external links take time to load)
+        setTimeout(() => {
+          hideSpinner();
+        }, 1500);
+      });
+    });
   </script>
 </body>
 </html>

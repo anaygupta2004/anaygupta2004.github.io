@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found | Anay Gupta</title>
+  <link rel="icon" href="src/favicon.png">
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+
+    .glow {
+      box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-6">
+  <div class="max-w-2xl w-full text-center">
+    <!-- 404 Number with floating animation -->
+    <div class="floating mb-8">
+      <h1 class="text-9xl font-bold gradient-text mb-4">404</h1>
+    </div>
+
+    <!-- Error message -->
+    <div class="fade-in-up" style="animation-delay: 0.2s;">
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Oops! Page Not Found</h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Looks like you've ventured into uncharted territory. The page you're looking for doesn't exist or may have been moved.
+      </p>
+    </div>
+
+    <!-- Decorative element -->
+    <div class="fade-in-up mb-8" style="animation-delay: 0.4s;">
+      <svg class="w-64 h-64 mx-auto" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+
+        <!-- Astronaut floating in space -->
+        <g transform="translate(100, 100)">
+          <!-- Planet -->
+          <circle cx="-40" cy="30" r="15" fill="url(#gradient)" opacity="0.3" class="pulse"/>
+
+          <!-- Stars -->
+          <circle cx="50" cy="-40" r="2" fill="#667eea" class="pulse" style="animation-delay: 0.5s;"/>
+          <circle cx="-60" cy="-30" r="1.5" fill="#764ba2" class="pulse" style="animation-delay: 1s;"/>
+          <circle cx="30" cy="50" r="1" fill="#667eea" class="pulse" style="animation-delay: 1.5s;"/>
+          <circle cx="-30" cy="-60" r="2" fill="#764ba2" class="pulse" style="animation-delay: 2s;"/>
+
+          <!-- Simplified astronaut -->
+          <g class="floating" style="animation-duration: 4s;">
+            <!-- Body -->
+            <ellipse cx="0" cy="0" rx="25" ry="35" fill="#f0f0f0" stroke="#667eea" stroke-width="2"/>
+            <!-- Helmet -->
+            <circle cx="0" cy="-25" r="18" fill="#ffffff" stroke="#667eea" stroke-width="2" opacity="0.9"/>
+            <!-- Helmet reflection -->
+            <ellipse cx="-5" cy="-28" rx="8" ry="10" fill="url(#gradient)" opacity="0.3"/>
+            <!-- Arms -->
+            <rect x="-35" y="-10" width="12" height="25" rx="6" fill="#f0f0f0" stroke="#667eea" stroke-width="2" transform="rotate(-20 -29 2)"/>
+            <rect x="23" y="-10" width="12" height="25" rx="6" fill="#f0f0f0" stroke="#667eea" stroke-width="2" transform="rotate(20 29 2)"/>
+            <!-- Legs -->
+            <rect x="-12" y="25" width="10" height="20" rx="5" fill="#f0f0f0" stroke="#667eea" stroke-width="2"/>
+            <rect x="2" y="25" width="10" height="20" rx="5" fill="#f0f0f0" stroke="#667eea" stroke-width="2"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="fade-in-up flex flex-col sm:flex-row gap-4 justify-center" style="animation-delay: 0.6s;">
+      <a href="/" class="inline-block px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full hover-scale glow transition-all duration-300 hover:shadow-lg">
+        Go Home
+      </a>
+      <button onclick="history.back()" class="inline-block px-8 py-3 bg-white text-gray-700 font-semibold rounded-full border-2 border-gray-300 hover-scale transition-all duration-300 hover:border-purple-400 hover:text-purple-600">
+        Go Back
+      </button>
+    </div>
+
+    <!-- Fun suggestions -->
+    <div class="fade-in-up mt-12" style="animation-delay: 0.8s;">
+      <p class="text-sm text-gray-500 mb-4">While you're here, you might want to:</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="https://www.linkedin.com/in/a-gupta123/" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:text-sky-800 text-sm hover-scale inline-block">
+          Connect on LinkedIn →
+        </a>
+        <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:text-sky-800 text-sm hover-scale inline-block">
+          Check out my research →
+        </a>
+        <a href="src/Anay_Gupta_CV.pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:text-sky-800 text-sm hover-scale inline-block">
+          View my CV →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Add some interactive elements
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add random floating particles
+      const colors = ['#667eea', '#764ba2', '#f0f0f0'];
+      const body = document.body;
+
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          const particle = document.createElement('div');
+          particle.style.position = 'fixed';
+          particle.style.width = '4px';
+          particle.style.height = '4px';
+          particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          particle.style.borderRadius = '50%';
+          particle.style.pointerEvents = 'none';
+          particle.style.opacity = '0.5';
+          particle.style.left = Math.random() * window.innerWidth + 'px';
+          particle.style.top = Math.random() * window.innerHeight + 'px';
+          particle.style.animation = `float ${3 + Math.random() * 4}s ease-in-out infinite`;
+          particle.style.animationDelay = Math.random() * 2 + 's';
+          body.appendChild(particle);
+        }, i * 200);
+      }
+
+      // Log 404 event (optional - for analytics)
+      console.log('404 Page Loaded:', window.location.pathname);
+    });
+  </script>
+</body>
+</html>

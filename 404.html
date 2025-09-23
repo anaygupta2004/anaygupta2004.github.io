@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found | Anay Gupta</title>
+  <link rel="icon" href="src/favicon.png">
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(14, 165, 233, 0.5);
+      }
+    }
+
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .glow-animation {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body class="text-lg bg-gradient-to-br from-white via-sky-50 to-white min-h-screen">
+  <div class="grid place-items-center min-h-screen p-6">
+    <div class="max-w-3xl text-center">
+      <!-- 404 Number with Animation -->
+      <div class="mb-8 float-animation">
+        <h1 class="text-9xl font-bold gradient-text mb-4">404</h1>
+      </div>
+
+      <!-- Error Message -->
+      <div class="mb-6">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Oops! Page Not Found</h2>
+        <p class="text-xl text-gray-600 mb-2">
+          Looks like you've ventured into uncharted territory.
+        </p>
+        <p class="text-lg text-gray-500">
+          The page you're looking for doesn't exist or may have been moved.
+        </p>
+      </div>
+
+      <!-- Fun Illustration/Icon -->
+      <div class="mb-8">
+        <div class="inline-block p-8 rounded-full bg-sky-100 glow-animation">
+          <svg class="w-24 h-24 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Navigation Options -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="inline-block px-8 py-3 bg-sky-600 text-white rounded-lg font-semibold hover:bg-sky-700 transition-colors hover-lift">
+            Go to Homepage
+          </a>
+          <button onclick="history.back()" class="inline-block px-8 py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gray-300 transition-colors hover-lift">
+            Go Back
+          </button>
+        </div>
+
+        <!-- Additional Links -->
+        <div class="mt-8 pt-8 border-t border-gray-200">
+          <p class="text-gray-600 mb-4">Or check out these links:</p>
+          <div class="flex flex-wrap justify-center gap-4 text-sky-600">
+            <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800 hover:underline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <span class="text-gray-400">•</span>
+            <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800 hover:underline" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <span class="text-gray-400">•</span>
+            <a href="src/Anay_Gupta_CV.pdf" class="hover:text-sky-800 hover:underline" target="_blank" rel="noopener noreferrer">CV</a>
+            <span class="text-gray-400">•</span>
+            <a href="#" onclick="copyEmail(event)" class="hover:text-sky-800 hover:underline">Email</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fun Easter Egg Message -->
+      <div class="mt-12 text-sm text-gray-400">
+        <p>Fun fact: The HTTP 404 error code was introduced in 1992!</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Copy email to clipboard (same as main page)
+    function copyEmail(e) {
+      e.preventDefault();
+      const email = "anay@gatech.edu";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied to clipboard!");
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Add some interactive particles on mouse move (subtle effect)
+    let mouseX = 0;
+    let mouseY = 0;
+    let particles = [];
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (Math.random() > 0.95) {
+        createParticle();
+      }
+    });
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.cssText = `
+        position: fixed;
+        width: 4px;
+        height: 4px;
+        background: rgba(14, 165, 233, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        left: ${mouseX}px;
+        top: ${mouseY}px;
+        animation: fadeOut 1s ease-out forwards;
+      `;
+
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 1000);
+    }
+
+    // Add fade out animation style
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.5) translateY(-20px);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

@@ -111,6 +111,13 @@
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6 mt-12">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p>&copy; <span id="currentYear">2024</span> Anay Gupta</p>
+    </div>
+  </footer>
+
   <script>
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -132,6 +139,9 @@
         console.error('Failed to copy: ', err);
       });
     }
+
+    // Update current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

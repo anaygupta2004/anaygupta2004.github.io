@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found</title>
+  <link rel="icon" href="src/favicon.png">
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.1; }
+    }
+
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .pulse-bg {
+      animation: pulse-slow 4s ease-in-out infinite;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="text-lg bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+  <!-- Background decoration -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full pulse-bg blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 rounded-full pulse-bg blur-3xl"></div>
+  </div>
+
+  <div class="relative grid place-items-center min-h-screen p-6">
+    <div class="max-w-4xl w-full">
+      <!-- 404 Large Display -->
+      <div class="text-center mb-8">
+        <div class="float-animation">
+          <h1 class="text-9xl font-black gradient-text mb-4">404</h1>
+        </div>
+
+        <!-- Glitch effect for "Page Not Found" -->
+        <h2 class="text-4xl font-bold text-gray-800 mb-2">Oops! Page Not Found</h2>
+
+        <!-- Fun message -->
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          Looks like you've wandered into uncharted territory. The page you're looking for has either moved, been deleted, or perhaps never existed in the first place.
+        </p>
+      </div>
+
+      <!-- Interactive illustration -->
+      <div class="flex justify-center mb-12">
+        <div class="relative">
+          <svg class="w-64 h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Computer monitor -->
+            <rect x="40" y="40" width="120" height="80" rx="5" fill="#4a5568" stroke="#2d3748" stroke-width="2"/>
+            <rect x="45" y="45" width="110" height="70" rx="3" fill="#1a202c"/>
+
+            <!-- Screen content (confused face) -->
+            <circle cx="75" cy="75" r="5" fill="#f6e05e"/>
+            <circle cx="125" cy="75" r="5" fill="#f6e05e"/>
+            <path d="M 70 95 Q 100 85 130 95" stroke="#f6e05e" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+            <!-- Stand -->
+            <rect x="90" y="120" width="20" height="30" fill="#4a5568"/>
+            <rect x="70" y="150" width="60" height="8" rx="2" fill="#4a5568"/>
+
+            <!-- Floating question marks -->
+            <text x="20" y="40" font-size="24" fill="#9f7aea" opacity="0.6" class="float-animation">?</text>
+            <text x="160" y="60" font-size="20" fill="#667eea" opacity="0.5" class="float-animation" style="animation-delay: 1s">?</text>
+            <text x="170" y="140" font-size="28" fill="#805ad5" opacity="0.4" class="float-animation" style="animation-delay: 2s">?</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="/" class="hover-lift bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Go Back Home
+          </span>
+        </a>
+
+        <button onclick="history.back()" class="hover-lift bg-white text-gray-800 font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl border border-gray-200 transition-all duration-300">
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Previous Page
+          </span>
+        </button>
+      </div>
+
+      <!-- Quick links section -->
+      <div class="mt-16 text-center">
+        <p class="text-gray-600 mb-4">Or check out these links:</p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm">
+          <a href="https://www.linkedin.com/in/a-gupta123/" class="text-sky-600 hover:text-sky-800 transition-colors" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <span class="text-gray-400">•</span>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="text-sky-600 hover:text-sky-800 transition-colors" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+          <span class="text-gray-400">•</span>
+          <a href="src/Anay_Gupta_CV.pdf" class="text-sky-600 hover:text-sky-800 transition-colors" target="_blank" rel="noopener noreferrer">CV</a>
+          <span class="text-gray-400">•</span>
+          <a href="#" onclick="copyEmail(event)" class="text-sky-600 hover:text-sky-800 transition-colors">Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Copy email to clipboard (same as main site)
+    function copyEmail(e) {
+      e.preventDefault();
+      const email = "anay@gatech.edu";
+      navigator.clipboard.writeText(email).then(() => {
+        // Create a more subtle notification
+        const notification = document.createElement('div');
+        notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 translate-y-20';
+        notification.textContent = 'Email copied to clipboard!';
+        document.body.appendChild(notification);
+
+        // Animate in
+        setTimeout(() => {
+          notification.classList.remove('translate-y-20');
+          notification.classList.add('translate-y-0');
+        }, 10);
+
+        // Animate out and remove
+        setTimeout(() => {
+          notification.classList.add('translate-y-20');
+          setTimeout(() => notification.remove(), 300);
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Add some interactive fun - make question marks follow mouse slightly
+    document.addEventListener('mousemove', (e) => {
+      const questions = document.querySelectorAll('text');
+      questions.forEach((q, i) => {
+        const speed = 0.01 * (i + 1);
+        const x = (e.clientX - window.innerWidth / 2) * speed;
+        const y = (e.clientY - window.innerHeight / 2) * speed;
+        q.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    });
+  </script>
+</body>
+</html>

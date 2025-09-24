@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found | Anay Gupta</title>
+  <link rel="icon" href="src/favicon.png">
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .geometric-bg {
+      background-image:
+        linear-gradient(30deg, #f0f0f0 12%, transparent 12.5%, transparent 87%, #f0f0f0 87.5%, #f0f0f0),
+        linear-gradient(150deg, #f0f0f0 12%, transparent 12.5%, transparent 87%, #f0f0f0 87.5%, #f0f0f0),
+        linear-gradient(30deg, #f0f0f0 12%, transparent 12.5%, transparent 87%, #f0f0f0 87.5%, #f0f0f0),
+        linear-gradient(150deg, #f0f0f0 12%, transparent 12.5%, transparent 87%, #f0f0f0 87.5%, #f0f0f0),
+        linear-gradient(60deg, #f5f5f5 25%, transparent 25.5%, transparent 75%, #f5f5f5 75%, #f5f5f5),
+        linear-gradient(60deg, #f5f5f5 25%, transparent 25.5%, transparent 75%, #f5f5f5 75%, #f5f5f5);
+      background-size: 80px 140px;
+      background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    }
+  </style>
+</head>
+<body class="text-lg bg-white geometric-bg min-h-screen">
+  <div class="min-h-screen flex flex-col items-center justify-center p-6">
+    <div class="max-w-4xl w-full">
+      <!-- 404 Error Section -->
+      <div class="text-center mb-12">
+        <div class="relative inline-block">
+          <h1 class="text-9xl font-bold gradient-text float-animation mb-4">404</h1>
+          <div class="absolute -inset-4 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 opacity-20 blur-3xl pulse-glow"></div>
+        </div>
+
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Oops! Page Not Found</h2>
+
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          Looks like you've ventured into uncharted territory. The page you're looking for seems to have wandered off into the digital void.
+        </p>
+
+        <!-- Animated Icon -->
+        <div class="mb-8">
+          <svg class="w-32 h-32 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Navigation Options -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+        <a href="/" class="block bg-white rounded-xl p-6 shadow-lg hover-lift border border-gray-100">
+          <div class="text-sky-600 mb-3">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Go Home</h3>
+          <p class="text-gray-600 text-sm">Return to the main page</p>
+        </a>
+
+        <a href="https://github.com/anaygupta2004" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-xl p-6 shadow-lg hover-lift border border-gray-100">
+          <div class="text-sky-600 mb-3">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">GitHub</h3>
+          <p class="text-gray-600 text-sm">Check out my projects</p>
+        </a>
+
+        <a href="https://www.linkedin.com/in/a-gupta123/" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-xl p-6 shadow-lg hover-lift border border-gray-100">
+          <div class="text-sky-600 mb-3">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">LinkedIn</h3>
+          <p class="text-gray-600 text-sm">Connect with me</p>
+        </a>
+      </div>
+
+      <!-- Fun Facts Section -->
+      <div class="bg-white/80 backdrop-blur rounded-xl p-8 shadow-lg border border-gray-100">
+        <h3 class="text-2xl font-bold mb-4 text-center">While you're here...</h3>
+        <div class="text-center text-gray-600">
+          <p class="mb-3">Did you know?</p>
+          <p class="text-lg italic" id="funFact">Loading a fun fact...</p>
+        </div>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="mt-8 max-w-md mx-auto">
+        <form action="/" method="get" class="flex gap-2">
+          <input
+            type="text"
+            placeholder="What were you looking for?"
+            class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+            disabled
+          >
+          <button
+            type="submit"
+            class="px-6 py-3 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled
+          >
+            Search
+          </button>
+        </form>
+        <p class="text-center text-sm text-gray-500 mt-2">Search functionality coming soon!</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fun facts to display
+    const funFacts = [
+      "The first computer bug was an actual bug - a moth trapped in a Harvard Mark II computer in 1947.",
+      "The '@' symbol was used in email addresses because it was the only preposition on the keyboard.",
+      "The first computer mouse was made of wood.",
+      "The QWERTY keyboard layout was designed to slow down typing to prevent typewriter jams.",
+      "There are approximately 1.7 billion websites on the internet, but only about 200 million are active.",
+      "The first website ever created is still online at info.cern.ch.",
+      "404 errors are named after the room at CERN where the World Wide Web was developed.",
+      "The average person spends about 7 hours a day looking at screens.",
+      "The first programming language was Fortran, created in 1954.",
+      "About 90% of the world's data was created in the last two years."
+    ];
+
+    // Display a random fun fact
+    function displayRandomFact() {
+      const randomIndex = Math.floor(Math.random() * funFacts.length);
+      document.getElementById('funFact').textContent = funFacts[randomIndex];
+    }
+
+    // Display fact on page load
+    displayRandomFact();
+
+    // Change fact every 10 seconds
+    setInterval(displayRandomFact, 10000);
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' || e.key === 'h') {
+        window.location.href = '/';
+      }
+    });
+  </script>
+</body>
+</html>

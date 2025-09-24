@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found | Anay Gupta</title>
+  <link rel="icon" href="src/favicon.png">
+</head>
+<body class="text-lg bg-white">
+  <div class="grid place-items-center min-h-screen">
+    <div class="max-w-4xl p-6 text-center">
+      <!-- 404 Error Display -->
+      <div class="mb-8">
+        <h1 class="text-9xl font-bold text-sky-600 mb-4">404</h1>
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Oops! Page Not Found</h2>
+        <p class="text-xl text-gray-600 mb-8">
+          The page you're looking for seems to have wandered off into the digital void. 
+          Don't worry, even the best explorers sometimes take a wrong turn!
+        </p>
+      </div>
+
+      <!-- Profile Section -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+        <div class="grid place-items-center">
+          <img class="rounded-full w-32 h-32 object-cover" src="src/anay.jpg" alt="Anay Gupta">
+        </div>
+        <div class="col-span-2 text-left">
+          <div class="font-bold text-3xl mb-2">Hi! I'm Anay.</div>
+          <p class="text-gray-600 mb-4">
+            While you're here, why not learn a bit about me? I'm a computer science student at Georgia Tech, 
+            passionate about machine learning and software engineering.
+          </p>
+          <div class="text-sky-600">
+            <div class="space-x-4">
+              <a href="index.html" class="hover:text-sky-800">[Home]</a>
+              <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
+              <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
+              <a href="src/Anay_Gupta_CV.pdf" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[CV]</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mb-8">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="index.html" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200">
+            ← Back to Home
+          </a>
+          <a href="https://www.microsoft.com/en-us/research/" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors duration-200" target="_blank" rel="noopener noreferrer">
+            Check out my work at Microsoft Research
+          </a>
+        </div>
+      </div>
+
+      <!-- Fun Facts Section -->
+      <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <h3 class="text-2xl font-bold mb-4 text-gray-800">Did you know?</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+          <div class="bg-white p-4 rounded-lg">
+            <h4 class="font-semibold text-sky-600 mb-2">🎯 Current Focus</h4>
+            <p class="text-gray-600">Co-founding Entity (Y Combinator F25) and working on LLM tokenization research.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg">
+            <h4 class="font-semibold text-sky-600 mb-2">🏔️ Hobbies</h4>
+            <p class="text-gray-600">When I'm not coding, you'll find me playing poker or bouldering!</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg">
+            <h4 class="font-semibold text-sky-600 mb-2">🎓 Education</h4>
+            <p class="text-gray-600">Studying computer science and machine learning at Georgia Tech.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg">
+            <h4 class="font-semibold text-sky-600 mb-2">🔬 Research</h4>
+            <p class="text-gray-600">Published work on synthetic regulatory DNA elements in bioRxiv 2023.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-gray-500 text-sm">
+        <p>Thanks for visiting! Feel free to explore the rest of my site.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Copy email to clipboard (same function as main site)
+    function copyEmail(e) {
+      e.preventDefault();
+      const email = "anay@gatech.edu";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied to clipboard!");
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Add some subtle animation to the 404 number
+    document.addEventListener('DOMContentLoaded', function() {
+      const errorNumber = document.querySelector('.text-9xl');
+      errorNumber.style.transition = 'transform 0.3s ease';
+      
+      errorNumber.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+      });
+      
+      errorNumber.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>

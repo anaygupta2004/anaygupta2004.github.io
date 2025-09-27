@@ -3,12 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function() {
+      var storedTheme = localStorage.getItem('theme');
+      var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+  <script>
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = { darkMode: 'class' };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Hi! I'm Anay.</title>
   <link rel="icon" href="src/favicon.png">
   <!-- Test comment for Gemini logging -->
 </head>
-<body class="text-lg bg-white">
+<body class="text-lg bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
   <div class="grid place-items-center">
     <div class="max-w-6xl p-6">
       <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
@@ -26,12 +41,13 @@
               Currently, I'm a student in Atlanta, Georgia, where I'm studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-sky-600 hover:text-sky-800" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on information retrieval on the Enterprise AI team at <a class="text-sky-600 hover:text-sky-800" href="https://www.delta.com/" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a software framework on the AI/ML department at <a class="text-sky-600 hover:text-sky-800" href="https://www.gene.com/" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.
             </div>
           </div>
-          <div class="text-lg text-sky-600 p-3 grid place-items-center">
+          <div class="text-lg text-sky-600 dark:text-sky-400 p-3 grid place-items-center">
             <div class="space-x-4">
-              <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
-              <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
-              <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
-              <a href="src/Anay_Gupta_CV.pdf" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[CV]</a>
+              <a href="#" id="emailLink" class="hover:text-sky-800 dark:hover:text-sky-300" onclick="copyEmail(event)">[Email]</a>
+              <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800 dark:hover:text-sky-300" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
+              <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800 dark:hover:text-sky-300" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
+              <a href="src/Anay_Gupta_CV.pdf" class="hover:text-sky-800 dark:hover:text-sky-300" target="_blank" rel="noopener noreferrer">[CV]</a>
+              <button id="themeToggle" class="ml-2 px-3 py-1 rounded border border-gray-300 dark:border-gray-600 text-sm">Toggle dark</button>
             </div>
           </div>
         </div>
@@ -41,35 +57,35 @@
         <h2 class="text-3xl font-bold mb-4">What I've been up to:</h2>
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <a href="https://www.ycombinator.com/" class="text-sky-600 hover:text-sky-800">Co-Founder at Entity (Y Combinator F25) ↗</a>
+            <a href="https://www.ycombinator.com/" class="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300">Co-Founder at Entity (Y Combinator F25) ↗</a>
           </div>
           <div>Fall 25</div>
           <div>
-            <a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800">Interned at Microsoft Research ↗</a>
+            <a href="https://www.microsoft.com/en-us/research/" class="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300">Interned at Microsoft Research ↗</a>
           </div>
           <div>Summer 24</div>
           <div>
-            <a href="https://delta.com/" class="text-sky-600 hover:text-sky-800">Interned at Delta Air Lines ↗</a>
+            <a href="https://delta.com/" class="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300">Interned at Delta Air Lines ↗</a>
           </div>
           <div>Spring 24</div>
           <div>
-            <a href="https://gene.com/" class="text-sky-600 hover:text-sky-800">Interned at Genentech ↗</a>
+            <a href="https://gene.com/" class="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300">Interned at Genentech ↗</a>
           </div>
           <div>Summer 23</div>
           <div>
-            <a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-600 hover:text-sky-800">Completed Google's CS Research Mentorship Program ↗</a>
+            <a href="https://research.google/programs-and-events/csrmp/recipients/" class="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300">Completed Google's CS Research Mentorship Program ↗</a>
           </div>
           <div>Spring 23</div>
           <div>
-            <a href="https://www.globalchallengesproject.org/" class="text-sky-600 hover:text-sky-800">Attended an AI Safety Workshop ↗</a>
+            <a href="https://www.globalchallengesproject.org/" class="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300">Attended an AI Safety Workshop ↗</a>
           </div>
           <div>March 23</div>
           <div>
-            <a href="https://goldwaterscholarship.gov/" class="text-sky-600 hover:text-sky-800">Won the Barry Goldwater Scholarship ↗</a>
+            <a href="https://goldwaterscholarship.gov/" class="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300">Won the Barry Goldwater Scholarship ↗</a>
           </div>
           <div>May 22</div>
           <div>
-            <a href="https://getzlab.org/" class="text-sky-600 hover:text-sky-800">Interned at the Broad Institute of MIT and Harvard ↗</a>
+            <a href="https://getzlab.org/" class="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300">Interned at the Broad Institute of MIT and Harvard ↗</a>
           </div>
           <div>Summer 21 & 22</div>
         </div>
@@ -101,9 +117,9 @@
             <div>
               <b>Anay Gupta</b>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan
             </div>
-            <div class="text-sky-600 mt-2">
-              <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800 mr-4" target="_blank" rel="noopener noreferrer">[DOI]</a>
-              <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
+          <div class="text-sky-600 dark:text-sky-400 mt-2">
+            <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800 dark:hover:text-sky-300 mr-4" target="_blank" rel="noopener noreferrer">[DOI]</a>
+            <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800 dark:hover:text-sky-300" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
             </div>
           </div>
         </div>

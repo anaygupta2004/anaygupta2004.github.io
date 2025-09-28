@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found | Anay Gupta</title>
+  <link rel="icon" href="src/favicon.png">
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 0.8s ease-out;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 text-lg">
+  <div class="min-h-screen flex items-center justify-center p-6">
+    <div class="max-w-2xl w-full text-center fade-in">
+      <!-- 404 Error Code with Animation -->
+      <div class="mb-8 float-animation">
+        <h1 class="text-9xl font-bold gradient-text mb-2">404</h1>
+        <div class="text-6xl mb-4">🔍</div>
+      </div>
+
+      <!-- Error Message -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8 hover-lift">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Oops! Page Not Found</h2>
+        <p class="text-gray-600 mb-6">
+          It looks like you've ventured into uncharted territory. The page you're looking for seems to have disappeared into the digital void.
+        </p>
+
+        <!-- Fun Message -->
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 mb-6">
+          <p class="text-gray-700 italic">
+            "Not all those who wander are lost... but this page definitely is!"
+          </p>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="text-left mb-6">
+          <p class="text-gray-700 font-semibold mb-2">Here are some things you can try:</p>
+          <ul class="list-disc list-inside text-gray-600 space-y-1">
+            <li>Check if the URL is typed correctly</li>
+            <li>Go back to the previous page</li>
+            <li>Visit the homepage and start fresh</li>
+            <li>Contact me if you believe this is an error</li>
+          </ul>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3 px-8 rounded-full hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover-lift">
+            Go to Homepage
+          </a>
+          <button onclick="history.back()" class="inline-block bg-white border-2 border-gray-300 text-gray-700 font-semibold py-3 px-8 rounded-full hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 hover-lift">
+            Go Back
+          </button>
+        </div>
+      </div>
+
+      <!-- Additional Links -->
+      <div class="text-sm text-gray-500">
+        <p class="mb-2">Or explore these quick links:</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/#" class="text-sky-600 hover:text-sky-800 transition-colors">About Me</a>
+          <span class="text-gray-400">•</span>
+          <a href="src/Anay_Gupta_CV.pdf" class="text-sky-600 hover:text-sky-800 transition-colors">CV</a>
+          <span class="text-gray-400">•</span>
+          <a href="https://www.linkedin.com/in/a-gupta123/" class="text-sky-600 hover:text-sky-800 transition-colors" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <span class="text-gray-400">•</span>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="text-sky-600 hover:text-sky-800 transition-colors" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Add a fun easter egg - random messages on reload
+    const funMessages = [
+      "This page is taking a gap year.",
+      "404: Page not found, but your potential is!",
+      "This page is out exploring the internet.",
+      "Error 404: This page is in another castle.",
+      "This page is probably debugging itself.",
+      "404: The page you seek lies beyond the great firewall."
+    ];
+
+    // Randomly change the fun message
+    window.addEventListener('load', () => {
+      const messageElement = document.querySelector('.italic');
+      if (messageElement && Math.random() > 0.5) {
+        const randomMessage = funMessages[Math.floor(Math.random() * funMessages.length)];
+        messageElement.textContent = `"${randomMessage}"`;
+      }
+    });
+
+    // Add particle effect on mouse move (subtle background effect)
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+
+      document.body.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, #eff6ff 0%, #ffffff 40%, #faf5ff 100%)`;
+    });
+  </script>
+</body>
+</html>

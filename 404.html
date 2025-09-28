@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 • Page Not Found</title>
+  <link rel="icon" href="src/favicon.png">
+</head>
+<body class="min-h-screen bg-white text-slate-800 grid place-items-center">
+  <main class="max-w-2xl w-full px-6 py-16 text-center">
+    <div class="mb-6">
+      <span class="inline-block rounded-full bg-sky-50 text-sky-700 px-3 py-1 text-sm">Error</span>
+    </div>
+
+    <h1 class="text-8xl font-extrabold tracking-tight leading-none">
+      <span class="bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">404</span>
+    </h1>
+
+    <p class="mt-4 text-xl text-slate-600">Page not found</p>
+    <p class="mt-2 text-slate-500">Looks like this page drifted off course. Let’s get you back on track.</p>
+
+    <div class="mt-8 flex items-center justify-center gap-3 flex-wrap">
+      <a href="/" class="inline-flex items-center gap-2 rounded-md bg-sky-600 px-5 py-3 font-medium text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2">
+        Home
+      </a>
+      <a href="mailto:anay@gatech.edu" class="inline-flex items-center gap-2 rounded-md border border-slate-300 px-5 py-3 font-medium text-slate-700 hover:text-sky-800 hover:border-sky-300">
+        Email Me
+      </a>
+      <a href="https://www.linkedin.com/in/a-gupta123/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-md border border-slate-300 px-5 py-3 font-medium text-slate-700 hover:text-sky-800 hover:border-sky-300">
+        LinkedIn
+      </a>
+      <a href="src/Anay_Gupta_CV.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-md border border-slate-300 px-5 py-3 font-medium text-slate-700 hover:text-sky-800 hover:border-sky-300">
+        CV
+      </a>
+    </div>
+
+    <div class="mt-10 text-sm text-slate-500">
+      You’ll be redirected to the homepage in <span id="counter" class="font-semibold text-slate-700">10</span>s.
+    </div>
+  </main>
+
+  <script>
+    // Simple auto-redirect after a short delay
+    let remaining = 10;
+    const el = document.getElementById('counter');
+    const timer = setInterval(() => {
+      remaining -= 1;
+      if (el) el.textContent = String(remaining);
+      if (remaining <= 0) {
+        clearInterval(timer);
+        window.location.href = '/';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found | Anay Gupta</title>
+  <link rel="icon" href="src/favicon.png">
+</head>
+<body class="text-lg bg-white">
+  <div class="grid place-items-center min-h-screen">
+    <div class="max-w-4xl p-6 text-center">
+      <!-- 404 Error Display -->
+      <div class="mb-8">
+        <h1 class="text-9xl font-bold text-gray-300 mb-4">404</h1>
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Oops! Page Not Found</h2>
+        <p class="text-xl text-gray-600 mb-8">
+          The page you're looking for seems to have wandered off into the digital void. 
+          Don't worry, even the best explorers sometimes take a wrong turn!
+        </p>
+      </div>
+
+      <!-- Profile Section (matching main page style) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+        <div class="grid place-items-center p-3">
+          <img class="rounded-full w-32" src="src/anay.jpg" alt="Anay Gupta">
+        </div>
+        <div class="col-span-2 text-left">
+          <div class="font-bold text-3xl p-3 mb-4">
+            Hi. I'm Anay.
+          </div>
+          <div class="text-lg p-3">
+            <div>
+              While you're here, feel free to explore my work! I'm a computer science student at Georgia Tech, 
+              interested in machine learning and software engineering. I've worked at Microsoft Research, 
+              Delta Air Lines, and Genentech.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Options -->
+      <div class="mb-8">
+        <h3 class="text-2xl font-bold mb-6">Let's get you back on track:</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a href="/" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200">
+            🏠 Go Home
+          </a>
+          <a href="src/Anay_Gupta_CV.pdf" target="_blank" rel="noopener noreferrer" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200">
+            📄 View CV
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold mb-4">Quick Links:</h3>
+        <div class="text-lg text-sky-600 space-x-4">
+          <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
+          <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[Google Scholar]</a>
+        </div>
+      </div>
+
+      <!-- Fun Message -->
+      <div class="bg-gray-50 rounded-lg p-6">
+        <p class="text-gray-700 italic">
+          "The only way to discover the limits of the possible is to go beyond them into the impossible." 
+          <br>— Arthur C. Clarke
+        </p>
+        <p class="text-sm text-gray-500 mt-2">
+          (Or in this case, just click one of the links above to get back to the possible!)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Copy email to clipboard (same functionality as main page)
+    function copyEmail(e) {
+      e.preventDefault();
+      const email = "anay@gatech.edu";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied to clipboard!");
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</body>
+</html>

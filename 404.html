@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found | Anay Gupta</title>
+  <link rel="icon" href="src/favicon.png">
+</head>
+<body class="text-lg bg-white">
+  <div class="grid place-items-center min-h-screen">
+    <div class="max-w-4xl p-6 text-center">
+      <!-- 404 Number Display -->
+      <div class="mb-8">
+        <h1 class="text-9xl font-bold text-gray-300 mb-4">404</h1>
+        <div class="text-4xl font-bold text-gray-800 mb-4">Oops! Page Not Found</div>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          It looks like you've wandered into uncharted territory. The page you're looking for doesn't exist, but don't worry – even the best explorers sometimes take a wrong turn!
+        </p>
+      </div>
+
+      <!-- Profile Image -->
+      <div class="mb-8">
+        <img class="rounded-full w-32 h-32 mx-auto mb-4" src="src/anay.jpg" alt="Anay Gupta">
+        <p class="text-lg text-gray-600">Hi! I'm Anay, and I'm here to help you get back on track.</p>
+      </div>
+
+      <!-- Navigation Options -->
+      <div class="space-y-4 mb-8">
+        <div class="text-lg text-sky-600 space-x-6">
+          <a href="/" class="hover:text-sky-800 font-medium">← Back to Home</a>
+          <a href="mailto:anay@gatech.edu" class="hover:text-sky-800 font-medium">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Fun Facts Section -->
+      <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <h3 class="text-xl font-bold mb-4 text-gray-800">While you're here, did you know?</h3>
+        <div class="text-gray-600 space-y-2">
+          <p>• The HTTP 404 error code was named after room 404 at CERN, where the original web servers were located</p>
+          <p>• I'm currently studying computer science and machine learning at Georgia Tech</p>
+          <p>• I've worked at Microsoft Research, Delta Air Lines, and Genentech</p>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="text-center">
+        <h3 class="text-xl font-bold mb-4 text-gray-800">Quick Links</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sky-600">
+          <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800 p-3 border border-sky-200 rounded-lg hover:bg-sky-50 transition-colors" target="_blank" rel="noopener noreferrer">
+            LinkedIn Profile
+          </a>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="hover:text-sky-800 p-3 border border-sky-200 rounded-lg hover:bg-sky-50 transition-colors" target="_blank" rel="noopener noreferrer">
+            Google Scholar
+          </a>
+          <a href="src/Anay_Gupta_CV.pdf" class="hover:text-sky-800 p-3 border border-sky-200 rounded-lg hover:bg-sky-50 transition-colors" target="_blank" rel="noopener noreferrer">
+            Download CV
+          </a>
+          <a href="mailto:anay@gatech.edu" class="hover:text-sky-800 p-3 border border-sky-200 rounded-lg hover:bg-sky-50 transition-colors">
+            Send Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Add some interactive elements
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animate the 404 number on load
+      const errorNumber = document.querySelector('h1');
+      errorNumber.style.opacity = '0';
+      errorNumber.style.transform = 'scale(0.5)';
+      
+      setTimeout(() => {
+        errorNumber.style.transition = 'all 0.8s ease-out';
+        errorNumber.style.opacity = '1';
+        errorNumber.style.transform = 'scale(1)';
+      }, 200);
+
+      // Add hover effects to quick links
+      const quickLinks = document.querySelectorAll('.grid a');
+      quickLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-2px)';
+          this.style.boxShadow = '0 4px 12px rgba(14, 165, 233, 0.15)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+          this.style.boxShadow = 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

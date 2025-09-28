@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 • Page Not Found</title>
+  <link rel="icon" href="src/favicon.png">
+</head>
+<body class="min-h-screen bg-gradient-to-b from-sky-50 to-white text-slate-800">
+  <main class="min-h-screen grid place-items-center p-6">
+    <section class="max-w-3xl w-full text-center">
+      <div class="inline-flex items-center justify-center rounded-full border border-sky-200 bg-white/70 px-4 py-1 text-sm text-sky-700 mb-6 shadow-sm backdrop-blur">
+        <span class="mr-2">🚧</span> Lost in the site?
+      </div>
+
+      <h1 class="text-7xl sm:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-indigo-600 drop-shadow-sm select-none">
+        404
+      </h1>
+      <p class="mt-6 text-2xl font-semibold">This page doesn’t exist.</p>
+      <p class="mt-2 text-slate-600">No worries — let’s get you back on track.</p>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="/" class="inline-flex items-center justify-center rounded-lg bg-sky-600 px-5 py-3 font-medium text-white shadow hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2">
+          ← Go Home
+        </a>
+        <button id="backBtn" class="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 font-medium text-sky-700 border border-sky-200 shadow-sm hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-300">
+          ⤺ Back
+        </button>
+        <button id="emailBtn" class="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 font-medium text-sky-700 border border-sky-200 shadow-sm hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-300">
+          📧 Copy Email
+        </button>
+      </div>
+
+      <div class="mt-10">
+        <p class="text-sm uppercase tracking-wider text-slate-500">Quick links</p>
+        <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sky-700">
+          <a class="rounded-lg border border-sky-200 bg-white p-4 shadow-sm hover:bg-sky-50" href="/">Home</a>
+          <a class="rounded-lg border border-sky-200 bg-white p-4 shadow-sm hover:bg-sky-50" href="src/Anay_Gupta_CV.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+          <a class="rounded-lg border border-sky-200 bg-white p-4 shadow-sm hover:bg-sky-50" href="https://www.linkedin.com/in/a-gupta123/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a class="rounded-lg border border-sky-200 bg-white p-4 shadow-sm hover:bg-sky-50" href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+        </div>
+      </div>
+
+      <footer class="mt-12 text-sm text-slate-500">
+        <span>Hi! I'm Anay.</span>
+        <span class="mx-2">•</span>
+        <a class="text-sky-700 hover:text-sky-900" href="/">anaygupta2004.github.io</a>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // Back navigation
+    document.getElementById('backBtn').addEventListener('click', () => {
+      if (history.length > 1) {
+        history.back();
+      } else {
+        location.href = '/';
+      }
+    });
+
+    // Copy email to clipboard (to match index.html behavior)
+    document.getElementById('emailBtn').addEventListener('click', () => {
+      const email = 'anay@gatech.edu';
+      navigator.clipboard.writeText(email)
+        .then(() => alert('Email copied to clipboard!'))
+        .catch(() => alert('Could not copy email'));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found | Anay Gupta</title>
+  <link rel="icon" href="src/favicon.png">
+</head>
+<body class="text-lg bg-white">
+  <div class="grid place-items-center min-h-screen">
+    <div class="max-w-4xl p-6 text-center">
+      <!-- 404 Error Display -->
+      <div class="mb-8">
+        <h1 class="text-9xl font-bold text-gray-300 mb-4">404</h1>
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Oops! Page Not Found</h2>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          The page you're looking for seems to have wandered off into the digital void. 
+          Don't worry though - even the best explorers sometimes take a wrong turn!
+        </p>
+      </div>
+
+      <!-- Profile Section -->
+      <div class="mb-8">
+        <div class="grid place-items-center mb-6">
+          <img class="rounded-full w-32 h-32 mb-4" src="src/anay.jpg" alt="Anay Gupta">
+        </div>
+        <div class="font-bold text-3xl mb-4">
+          Hi. I'm Anay.
+        </div>
+        <div class="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+          While you're here, let me introduce myself! I'm a computer science student at Georgia Tech, 
+          passionate about machine learning and software engineering.
+        </div>
+        <div class="text-lg text-sky-600 mb-8">
+          <div class="space-x-4">
+            <a href="/" class="hover:text-sky-800">[Home]</a>
+            <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
+            <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
+            <a href="src/Anay_Gupta_CV.pdf" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[CV]</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="mb-8">
+        <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+          <a href="/" class="p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors">
+            <div class="font-semibold text-sky-600">🏠 Home</div>
+            <div class="text-sm text-gray-600">Back to the main page</div>
+          </a>
+          <a href="https://www.microsoft.com/en-us/research/" class="p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors" target="_blank" rel="noopener noreferrer">
+            <div class="font-semibold text-sky-600">🔬 Research</div>
+            <div class="text-sm text-gray-600">Microsoft Research work</div>
+          </a>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" class="p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors" target="_blank" rel="noopener noreferrer">
+            <div class="font-semibold text-sky-600">📚 Publications</div>
+            <div class="text-sm text-gray-600">Google Scholar profile</div>
+          </a>
+          <a href="https://www.ycombinator.com/" class="p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors" target="_blank" rel="noopener noreferrer">
+            <div class="font-semibold text-sky-600">🚀 Entity</div>
+            <div class="text-sm text-gray-600">Y Combinator F25</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Fun Message -->
+      <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-6 rounded-lg max-w-2xl mx-auto">
+        <p class="text-gray-700 italic">
+          "The best way to find out if you can trust somebody is to trust them." 
+          <br><span class="text-sm text-gray-500">- Ernest Hemingway (and also, just trust that this page exists now!)</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Copy email to clipboard (same functionality as main page)
+    function copyEmail(e) {
+      e.preventDefault();
+      const email = "anay@gatech.edu";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied to clipboard!");
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Add some subtle animation to the 404 number
+    document.addEventListener('DOMContentLoaded', function() {
+      const errorNumber = document.querySelector('.text-9xl');
+      errorNumber.style.transition = 'all 0.3s ease';
+      
+      errorNumber.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+        this.style.color = '#0ea5e9';
+      });
+      
+      errorNumber.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+        this.style.color = '#d1d5db';
+      });
+    });
+  </script>
+</body>
+</html>

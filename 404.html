@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 - Page Not Found | Anay Gupta</title>
+  <link rel="icon" href="src/favicon.png">
+</head>
+<body class="text-lg bg-white">
+  <div class="grid place-items-center min-h-screen">
+    <div class="max-w-4xl p-6 text-center">
+      <!-- 404 Error Display -->
+      <div class="mb-8">
+        <h1 class="text-9xl font-bold text-sky-600 mb-4">404</h1>
+        <h2 class="text-4xl font-bold text-gray-800 mb-6">Oops! Page Not Found</h2>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          The page you're looking for seems to have wandered off into the digital void. 
+          Don't worry though – even the best explorers sometimes take a wrong turn!
+        </p>
+      </div>
+
+      <!-- Profile Section -->
+      <div class="mb-8">
+        <div class="flex justify-center mb-6">
+          <img class="rounded-full w-32 h-32" src="src/anay.jpg" alt="Anay Gupta">
+        </div>
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Hi! I'm Anay.</h3>
+        <p class="text-lg text-gray-600 mb-6 max-w-xl mx-auto">
+          While you're here, feel free to check out my work and interests. 
+          I'm a computer science student at Georgia Tech with a passion for machine learning and software engineering.
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mb-8">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="/" class="bg-sky-600 hover:bg-sky-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200">
+            ← Back to Home
+          </a>
+          <a href="src/Anay_Gupta_CV.pdf" target="_blank" rel="noopener noreferrer" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold transition-colors duration-200">
+            View My CV
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="mb-8">
+        <h4 class="text-xl font-semibold text-gray-800 mb-4">Quick Links</h4>
+        <div class="flex flex-wrap justify-center gap-6 text-sky-600">
+          <a href="https://www.linkedin.com/in/a-gupta123/" target="_blank" rel="noopener noreferrer" class="hover:text-sky-800 transition-colors duration-200">
+            LinkedIn
+          </a>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jZoAc2QAAAAJ" target="_blank" rel="noopener noreferrer" class="hover:text-sky-800 transition-colors duration-200">
+            Google Scholar
+          </a>
+          <a href="#" id="emailLink" onclick="copyEmail(event)" class="hover:text-sky-800 transition-colors duration-200">
+            Email
+          </a>
+        </div>
+      </div>
+
+      <!-- Fun Facts Section -->
+      <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <h4 class="text-xl font-semibold text-gray-800 mb-4">Did you know?</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+          <div class="bg-white p-4 rounded-lg">
+            <h5 class="font-semibold text-sky-600 mb-2">Current Work</h5>
+            <p class="text-sm text-gray-600">Co-Founder at Entity (Y Combinator F25)</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg">
+            <h5 class="font-semibold text-sky-600 mb-2">Recent Experience</h5>
+            <p class="text-sm text-gray-600">Interned at Microsoft Research (Summer 24)</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg">
+            <h5 class="font-semibold text-sky-600 mb-2">Research Interest</h5>
+            <p class="text-sm text-gray-600">LLMs in biology and generalist models</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg">
+            <h5 class="font-semibold text-sky-600 mb-2">Fun Fact</h5>
+            <p class="text-sm text-gray-600">Enjoys playing poker and bouldering!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-sm text-gray-500">
+        <p>© 2024 Anay Gupta. Built with ❤️ and Tailwind CSS.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Copy email to clipboard (same function as main site)
+    function copyEmail(e) {
+      e.preventDefault();
+      const email = "anay@gatech.edu";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied to clipboard!");
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Add some subtle animation on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const elements = document.querySelectorAll('h1, h2, h3, .bg-gray-50');
+      elements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, index * 100);
+      });
+    });
+  </script>
+</body>
+</html>

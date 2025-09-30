@@ -4,11 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
++  <script>
++    // Enable dark mode class strategy for Tailwind
++    tailwind.config = {
++      darkMode: 'class'
++    }
++  </script>
   <title>Hi! I'm Anay.</title>
   <link rel="icon" href="src/favicon.png">
   <!-- Test comment for Gemini logging -->
++  <style>
++    /* Smooth transition for dark mode */
++    * {
++      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
++    }
++
++    /* Custom styles for dark mode toggle */
++    .toggle-checkbox:checked {
++      right: 0;
++      border-color: #4f46e5;
++    }
++
++    .toggle-checkbox:checked + .toggle-label {
++      background-color: #4f46e5;
++    }
++
++    .toggle-checkbox {
++      transition: all 0.3s ease;
++    }
++  </style>
 </head>
-<body class="text-lg bg-white">
++<body class="text-lg bg-white dark:bg-gray-900 dark:text-gray-100">
++  <!-- Dark Mode Toggle -->
++  <div class="fixed top-4 right-4 z-50">
++    <button id="darkModeToggle" class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 shadow-lg">
++      <!-- Sun icon (light mode) -->
++      <svg id="sunIcon" class="w-6 h-6 text-yellow-500 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
++        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
++      </svg>
++      <!-- Moon icon (dark mode) -->
++      <svg id="moonIcon" class="w-6 h-6 text-gray-700 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
++        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
++      </svg>
++    </button>
++  </div>
++
   <div class="grid place-items-center">
     <div class="max-w-6xl p-6">
       <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
@@ -23,10 +63,10 @@
           <!-- Test to see if Gemini can see this -->
           <div class="text-xl p-3 grid place-items-center">
             <div>
-              Currently, I'm a student in Atlanta, Georgia, where I'm studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-sky-600 hover:text-sky-800" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on information retrieval on the Enterprise AI team at <a class="text-sky-600 hover:text-sky-800" href="https://www.delta.com/" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a software framework on the AI/ML department at <a class="text-sky-600 hover:text-sky-800" href="https://www.gene.com/" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.
++              Currently, I'm a student in Atlanta, Georgia, where I'm studying computer science and machine learning at Georgia Tech. My interests span from machine learning to software engineering. Last summer, I was an intern at <a class="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300" href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener noreferrer">Microsoft Research</a>, where I worked on new ways to tokenize data for LLMs. I've also had the pleasure to work on information retrieval on the Enterprise AI team at <a class="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300" href="https://www.delta.com/" target="_blank" rel="noopener noreferrer">Delta Air Lines</a> and a software framework on the AI/ML department at <a class="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300" href="https://www.gene.com/" target="_blank" rel="noopener noreferrer">Genentech</a>. Outside of work, I enjoy playing poker and bouldering.
             </div>
           </div>
-          <div class="text-lg text-sky-600 p-3 grid place-items-center">
++          <div class="text-lg text-sky-600 dark:text-sky-400 p-3 grid place-items-center">
             <div class="space-x-4">
               <a href="#" id="emailLink" class="hover:text-sky-800" onclick="copyEmail(event)">[Email]</a>
               <a href="https://www.linkedin.com/in/a-gupta123/" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
@@ -101,7 +141,7 @@
             <div>
               <b>Anay Gupta</b>, Avantika Lal, Laura Gunsalus, Tommaso Biancalani, Gokcen Eraslan
             </div>
-            <div class="text-sky-600 mt-2">
++            <div class="text-sky-600 dark:text-sky-400 mt-2">
               <a href="https://doi.org/10.1101/2023.11.27.568764" class="hover:text-sky-800 mr-4" target="_blank" rel="noopener noreferrer">[DOI]</a>
               <a href="https://www.biorxiv.org/content/10.1101/2023.11.27.568764v1.full" class="hover:text-sky-800" target="_blank" rel="noopener noreferrer">[bioRxiv]</a>
             </div>
@@ -112,6 +152,23 @@
   </div>
 
   <script>
++    // Dark mode toggle functionality
++    const darkModeToggle = document.getElementById('darkModeToggle');
++    const htmlElement = document.documentElement;
++
++    // Check for saved dark mode preference or default to light mode
++    const currentTheme = localStorage.getItem('theme');
++    if (currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
++      htmlElement.classList.add('dark');
++    }
++
++    // Toggle dark mode
++    darkModeToggle.addEventListener('click', () => {
++      htmlElement.classList.toggle('dark');
++      const isDark = htmlElement.classList.contains('dark');
++      localStorage.setItem('theme', isDark ? 'dark' : 'light');
++    });
++
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {

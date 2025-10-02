@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 • Page not found</title>
+  <link rel="icon" href="src/favicon.png">
+  <meta name="robots" content="noindex">
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body class="min-h-dvh bg-white text-gray-900">
+  <div class="min-h-dvh grid place-items-center px-6">
+    <main class="w-full max-w-3xl text-center">
+      <div class="mb-6 flex justify-center">
+        <img class="rounded-full w-28 h-28 object-cover shadow-sm" src="src/anay.jpg" alt="Anay Gupta">
+      </div>
+      <h1 class="text-6xl sm:text-7xl font-extrabold tracking-tight mb-4">
+        404
+      </h1>
+      <p class="text-xl sm:text-2xl text-gray-700 mb-6">
+        The page you're looking for doesn't exist.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/" class="inline-flex items-center justify-center rounded-md bg-sky-600 px-5 py-3 text-white font-semibold shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 transition">
+          ← Back to home
+        </a>
+        <a href="mailto:anay@gatech.edu" class="inline-flex items-center justify-center rounded-md border border-gray-300 px-5 py-3 text-gray-900 font-semibold hover:bg-gray-50 transition">
+          Contact Anay
+        </a>
+      </div>
+
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
+        <div class="p-4 rounded-lg border border-gray-200">
+          <div class="text-sm text-gray-500 mb-1">Tip</div>
+          <div class="font-medium">Check the URL for typos</div>
+        </div>
+        <div class="p-4 rounded-lg border border-gray-200">
+          <div class="text-sm text-gray-500 mb-1">Shortcut</div>
+          <div class="font-medium">Use the button to return home</div>
+        </div>
+        <div class="p-4 rounded-lg border border-gray-200">
+          <div class="text-sm text-gray-500 mb-1">Heads up</div>
+          <div class="font-medium">This page won't be indexed</div>
+        </div>
+      </div>
+
+      <div class="mt-10 text-sm text-gray-500">
+        <span class="inline-block animate-[float_3s_ease-in-out_infinite]">•</span>
+        <span class="inline-block animate-[float_3.2s_ease-in-out_infinite] mx-1">•</span>
+        <span class="inline-block animate-[float_2.8s_ease-in-out_infinite]">•</span>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

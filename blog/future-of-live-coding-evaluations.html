@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>The Future of Live Coding Evaluations - Anay Gupta</title>
+  <link rel="icon" href="../src/favicon.png">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    }
+    .blog-content {
+      line-height: 1.7;
+    }
+    .blog-content h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .blog-content h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+    }
+    .blog-content h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    .blog-content p {
+      margin-bottom: 1.5rem;
+    }
+    .blog-content ul, .blog-content ol {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+    }
+    .blog-content li {
+      margin-bottom: 0.75rem;
+    }
+    .blog-content a {
+      color: #0284c7;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .blog-content a:hover {
+      color: #075985;
+    }
+    .blog-content strong {
+      font-weight: 600;
+    }
+    .blog-content em {
+      font-style: italic;
+    }
+    .date {
+      color: #6b7280;
+      font-size: 1rem;
+    }
+    nav a {
+      color: #0284c7;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #075985;
+      text-decoration: underline;
+    }
+    .tldr-box {
+      background-color: #f3f4f6;
+      border-left: 4px solid #0284c7;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .section-number {
+      color: #6b7280;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <nav class="max-w-3xl mx-auto px-6 py-8">
+    <a href="../index.html">← Back to Home</a>
+  </nav>
+
+  <article class="max-w-3xl mx-auto px-6 pb-16 blog-content">
+    <header class="mb-12">
+      <h1>The Future of Live Coding Evaluations</h1>
+      <p class="date">November 12, 2025</p>
+    </header>
+
+    <p>
+      Recently, I spent some time working on <a href="https://codearena-ui-coral.vercel.app/" target="_blank" rel="noopener noreferrer">Codearena</a>, a platform to A/B test coding agents (e.g. Codex, Claude Code) for free and let them compete to solve your Github issues. You could (and still can!) tag the GitHub bot (@codearena-bot) on any public Github repository after installing our app to receive free PRs on your issues.
+    </p>
+
+    <div style="text-align: center; margin: 2rem 0;">
+      <img src="../src/codearena.png" alt="Codearena Interface" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    </div>
+
+    <p>
+      I've also recently had the opportunity to interview at <a href="https://lmarena.ai/" target="_blank" rel="noopener noreferrer">LMArena</a>, where I got to chat in-depth with <a href="https://infwinston.github.io/" target="_blank" rel="noopener noreferrer">Wei-Lin Chiang</a>, the co-founder of LMArena and Chatbot Arena, about Codearena, what the best form factor would be for A/B testing model/agents in real codebases, and where LMArena is heading. <strong>I wanted to use this blog post to focus on the different form factors you could implement to make a better codearena.</strong>
+    </p>
+
+    <div class="tldr-box">
+      <h3 style="margin-top: 0;">TLDR</h3>
+      <p>There are five main form factors that are the most promising:</p>
+      <ol>
+        <li><strong>VSCode Extension</strong> - highest friction to use, great UI/UX for displaying changes across different model/agent outputs</li>
+        <li><strong>CLI</strong> - low friction to use, intuitive to use for developers, hard to make UI/UX for applying/displaying changes across different model/agent outputs</li>
+        <li><strong>Web</strong> - lowest friction to use, harder to convince hardcore full-stack/backend to use (unless for web dev + more design heavy engineers + vibecoders)</li>
+        <li><strong>Desktop</strong> - this is Web but in an Electron app, similar to <a href="https://conductor.build/" target="_blank" rel="noopener noreferrer">Conductor</a></li>
+        <li><strong>Github bot</strong> - very similar to the existing Codearena</li>
+      </ol>
+      <p style="margin-bottom: 0;">
+        The best option in my opinion is to develop a <strong>CLI</strong>. It's the best medium meeting developers where they want to code (on their own machines) and having a low barrier to entry (just a package install vs installing a VSCode Extension/IDE). People switch between Codex and Claude Code all the time, however, the stickiness of Cursor is much higher.
+      </p>
+    </div>
+
+    <p>
+      <em>A big caveat is that all of these form factors also contribute a different flavor of evaluations: Github bot captures how good are frontier models at solving production bugs, the existing Code Arena in LMArena largely captures the design taste of a model, a CLI/extension captures how good models are at iterative development tasks...</em>
+    </p>
+
+    <h2><span class="section-number">Form Factor 1:</span> VSCode Extension</h2>
+
+    <p>
+      This form factor is exactly like Cursor 2.0. This version allows you to specify how many models/agents you want to run at once, and then it spawns all of them to complete a given task. This is what you see on the right hand side - if you click on an agent, it shows the output for that given agent applied on your codebase. It is the most intuitive UI/UX that abstracts the complexity of Git worktrees away from the user.
+    </p>
+
+    <div style="text-align: center; margin: 2rem 0;">
+      <img src="../src/cursor.png" alt="Cursor Interface" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    </div>
+
+    <p>The workflow is simple:</p>
+    <ol>
+      <li>You click between the agents.</li>
+      <li>Test it yourself to see if it works.</li>
+      <li>Apply the best code changes.</li>
+      <li>Repeat. ↻</li>
+    </ol>
+
+    <p>Super simple!</p>
+
+    <p>
+      The downsides of this approach are also fairly obvious. The activation energy for a dev to install an extension in VSCode/Cursor is high (at least compared to the other form factors), especially if they are already subscribed to Cursor, but it is not impossible to convince a dev to use this for free.
+    </p>
+
+    <h2><span class="section-number">Form Factor 2:</span> CLI</h2>
+
+    <p>
+      Interestingly enough, there seems to be demand for this already in the LMArena Discord: a CLI where you have 2 outputs instead of 1 for each feature request that you have.
+    </p>
+
+    <p>
+      The CLI approach offers several advantages. It meets developers where they already work - in the terminal - and has a much lower barrier to entry than a full IDE extension. Developers can simply install a package and start comparing model outputs immediately. The challenge lies in creating an intuitive interface for viewing and applying changes across different model outputs without the rich visual interface that an IDE provides.
+    </p>
+
+    <p>
+      One possible implementation could use Git worktrees under the hood, similar to the VSCode extension, but present changes through terminal-based diff views or by opening files in the user's preferred editor. The CLI could support commands like:
+    </p>
+
+    <ul>
+      <li><code>codearena run "implement feature X"</code> - spawns multiple models</li>
+      <li><code>codearena compare</code> - shows side-by-side diffs</li>
+      <li><code>codearena apply &lt;model&gt;</code> - applies chosen solution</li>
+    </ul>
+
+    <h2><span class="section-number">Form Factor 3:</span> Web</h2>
+
+    <p>
+      A web-based interface has the lowest friction to use - no installation required, just visit a URL. However, this form factor faces a unique challenge: it's harder to convince hardcore full-stack/backend and systems programmers to use a web interface for code evaluation, unless they're working on web development projects or are more design-oriented engineers.
+    </p>
+
+    <p>
+      The web interface would likely work best for:
+    </p>
+    <ul>
+      <li>Frontend and fullstack web developers</li>
+      <li>Design-heavy engineering tasks</li>
+      <li>Quick prototyping and "vibe coding"</li>
+      <li>Collaborative code reviews</li>
+    </ul>
+
+    <p>
+      The existing Codearena implementation on LMArena's website demonstrates this approach well, allowing users to compare model outputs in a browser-based environment.
+    </p>
+
+    <h2><span class="section-number">Form Factor 4:</span> Desktop App</h2>
+
+    <p>
+      This is essentially the web interface packaged as an Electron app, similar to <a href="https://conductor.build/" target="_blank" rel="noopener noreferrer">Conductor</a>. It combines some benefits of both web and native approaches:
+    </p>
+
+    <ul>
+      <li>Native feel and better file system access than a pure web app</li>
+      <li>Can integrate more deeply with the local development environment</li>
+      <li>Easier distribution than a VSCode extension for users who don't use VSCode</li>
+      <li>Still requires downloading and installing an application</li>
+    </ul>
+
+    <p>
+      The desktop app approach could be particularly appealing for developers who want a dedicated tool for model comparison without integrating it into their existing IDE.
+    </p>
+
+    <h2><span class="section-number">Form Factor 5:</span> Github Bot</h2>
+
+    <p>
+      This is very similar to the existing Codearena implementation. The Github bot approach has unique advantages for evaluating production-level bug fixes and real-world development scenarios.
+    </p>
+
+    <div style="text-align: center; margin: 2rem 0;">
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" src="https://www.youtube.com/embed/yDf4NqpF3-o" title="Codearena Github Bot Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <p>
+      Users can tag @codearena-bot on any issue in their repository, and the bot will generate competing solutions from different models. This approach:
+    </p>
+
+    <ul>
+      <li>Requires minimal setup (just install the Github app)</li>
+      <li>Works within existing developer workflows</li>
+      <li>Provides real-world evaluation data on production codebases</li>
+      <li>Scales well for OSS maintainers with many issues</li>
+    </ul>
+
+    <h2>Why didn't Codearena blow up?</h2>
+
+    <p>
+      In practice, it seems like a great idea! OSS maintainers have hundreds of issues that need to be solved and we can provide solutions at scale for free. A win-win situation. Except, there are problems.
+    </p>
+
+    <p>
+      There are two categories of people that would use a Github bot:
+    </p>
+
+    <ol>
+      <li><strong>OSS maintainers with many issues</strong> - While they have the volume of work that could benefit from automated solutions, they often need very high-quality PRs that understand the project's architecture, coding standards, and conventions. Current models struggle to consistently deliver this quality, especially on first try without iteration.</li>
+      <li><strong>Individual developers wanting to test models</strong> - These users might not have enough Github issues to make the bot valuable, or they want more control over the evaluation process than a bot provides.</li>
+    </ol>
+
+    <p>
+      Additionally, the Github bot form factor introduces friction in the feedback loop. If a model's solution isn't quite right, there's no easy way to iterate and refine it within the Github interface. Developers either accept the PR as-is, manually fix it, or reject it entirely.
+    </p>
+
+    <h2>Final Thoughts</h2>
+
+    <p>
+      The best option (in my opinion) is a CLI that developers can install locally. It would require authentication with an API key (so LMArena can rate limit), but provides the right balance of low friction and powerful functionality.
+    </p>
+
+    <p>
+      However, it might be valuable to test the hypothesis about developers' willingness to use web-based tools by adding a "Connect to Github" option to the existing arena on the website. This could validate whether the web interface can work for serious development tasks, or if developers really do prefer tools that run locally.
+    </p>
+
+    <p>
+      Each form factor captures different aspects of model capabilities:
+    </p>
+    <ul>
+      <li><strong>Github bot</strong> evaluates production bug-fixing ability</li>
+      <li><strong>Web interface</strong> evaluates design taste and quick prototyping</li>
+      <li><strong>CLI/Extension</strong> evaluates iterative development and code understanding</li>
+    </ul>
+
+    <p>
+      The ideal evaluation platform might actually incorporate multiple form factors to capture the full spectrum of coding agent capabilities. As these models continue to improve, having robust evaluation frameworks across different use cases will be crucial for understanding their true capabilities and limitations.
+    </p>
+
+    <hr style="margin: 3rem 0; border: none; border-top: 1px solid #e5e7eb;">
+
+    <p style="font-size: 0.9rem; color: #6b7280;">
+      <em>This post reflects my thoughts on building better evaluation frameworks for coding agents. If you're working on similar problems or have thoughts on this, I'd love to chat.</em>
+    </p>
+  </article>
+
+  <footer class="max-w-3xl mx-auto px-6 py-8 text-center text-gray-600">
+    <a href="../index.html" class="text-sky-600 hover:text-sky-800">← Back to Home</a>
+  </footer>
+</body>
+</html>

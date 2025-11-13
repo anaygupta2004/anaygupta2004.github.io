@@ -210,7 +210,7 @@
     <h2 id="form-factor-4"><span class="section-number">Form Factor 4:</span> Github Bot</h2>
 
     <p>
-      This is very similar to the existing Codearena implementation. The Github bot approach has unique advantages for evaluating production-level bug fixes and real-world development scenarios.
+      This is exactly the Codearena implementation. This flavor of evaluation captures how good frontier models are at solving production bugs in real-world codebases.
     </p>
 
     <div style="text-align: center; margin: 2rem 0;">
@@ -219,16 +219,13 @@
       </div>
     </div>
 
-    <p>
-      Users can tag @codearena-bot on any issue in their repository, and the bot will generate competing solutions from different models. This approach:
-    </p>
-
-    <ul>
-      <li>Requires minimal setup (just install the Github app)</li>
-      <li>Works within existing developer workflows</li>
-      <li>Provides real-world evaluation data on production codebases</li>
-      <li>Scales well for OSS maintainers with many issues</li>
-    </ul>
+    <p>The workflow:</p>
+    <ol>
+      <li>Install the Github App.</li>
+      <li>Tag @codearena-bot on a Github issue.</li>
+      <li>Review the competing solutions and select the best PR.</li>
+      <li>Repeat. ↻</li>
+    </ol>
 
     <h3>Why didn't Codearena blow up?</h3>
 

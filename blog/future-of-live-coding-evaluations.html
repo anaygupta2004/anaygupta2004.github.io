@@ -251,30 +251,29 @@
     </ol>
 
     <p>
-      Additionally, the Github bot form factor introduces friction in the feedback loop. If a model's solution isn't quite right, there's no easy way to iterate within the Github/Codearena interface. Developers either accept the PR as-is, manually fix it, or reject it entirely. We also should have stuck with our product longer and done better marketing to validate our concerns.
+      Additionally, the Github bot form factor introduces friction in the feedback loop. If a model's solution isn't quite right, there's no easy way to iterate within the Github/Codearena interface. Developers either accept the PR as-is, manually fix it, or reject it entirely.
+    </p>
+
+    <p>
+      We also should have stuck with our product longer and done better marketing to validate our concerns.
     </p>
 
     <h2>Final Thoughts</h2>
 
     <p>
-      The best option (in my opinion) is a CLI that developers can install locally. It would require authentication with an API key (so LMArena can rate limit), but provides the right balance of low friction and powerful functionality.
+      The best option (in my opinion) is a <strong>CLI</strong> that developers can install locally that provides the right balance of low friction and powerful functionality.
+    </p>
+
+    <div style="text-align: center; margin: 2rem 0;">
+      <img src="../src/metr.png" alt="METR Task Capabilities" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    </div>
+
+    <p>
+      As model capabilities rise, they'll handle longer tasks more reliably. We've already seen this with Cursor: individual queries → agent mode → background agents. Once models can reliably complete multi-day coding tasks in production codebases, even hardcore developers might prefer the web interface.
     </p>
 
     <p>
-      However, it might be valuable to test the hypothesis about developers' willingness to use web-based tools by adding a "Connect to Github" option to the existing arena on the website. This could validate whether the web interface can work for serious development tasks, or if developers really do prefer tools that run locally.
-    </p>
-
-    <p>
-      Each form factor captures different aspects of model capabilities:
-    </p>
-    <ul>
-      <li><strong>Github bot</strong> evaluates production bug-fixing ability</li>
-      <li><strong>Web interface</strong> evaluates design taste and quick prototyping</li>
-      <li><strong>CLI/Extension</strong> evaluates iterative development and code understanding</li>
-    </ul>
-
-    <p>
-      The ideal evaluation platform might actually incorporate multiple form factors to capture the full spectrum of coding agent capabilities. As these models continue to improve, having robust evaluation frameworks across different use cases will be crucial for understanding their true capabilities and limitations.
+      Right now, developers care most about reliability at scale. Code quality isn't there yet, which is why the feedback loop matters. But this will change. The key takeaway: think one to two steps ahead when building coding evaluations. Different form factors capture different capabilities, and the ideal platform probably incorporates multiple approaches.
     </p>
 
     <hr style="margin: 3rem 0; border: none; border-top: 1px solid #e5e7eb;">

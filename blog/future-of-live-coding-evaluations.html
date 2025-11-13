@@ -100,21 +100,20 @@
     </div>
 
     <p>
-      I've also recently had the amazing opportunity to interview at <a href="https://lmarena.ai/" target="_blank" rel="noopener noreferrer">LMArena</a>, where I got to chat in-depth with <a href="https://infwinston.github.io/" target="_blank" rel="noopener noreferrer">Wei-Lin Chiang</a>, the co-founder of LMArena, about Codearena, what the best form factor would be for A/B testing model/agents in real codebases, and where LMArena is heading. <strong>I wanted to use this blog post to focus on the different form factors you could implement to make a better codearena.</strong>
+      I've also recently had the amazing opportunity to chat in-depth with <a href="https://infwinston.github.io/" target="_blank" rel="noopener noreferrer">Wei-Lin Chiang</a>, co-founder of <a href="https://lmarena.ai/" target="_blank" rel="noopener noreferrer">LMArena</a>, about Codearena, what the best form factor would be for A/B testing model/agents in real codebases, and where LMArena is heading. <strong>I wanted to use this blog post to focus on the different form factors you could implement to make a better codearena.</strong>
     </p>
 
     <div class="tldr-box">
       <h3 style="margin-top: 0;">TLDR</h3>
-      <p>There are five main form factors that are the most promising:</p>
+      <p>There are four main form factors that are the most promising:</p>
       <ol>
         <li><strong>VSCode Extension</strong> - highest friction to use, great UI/UX for displaying changes across different model/agent outputs</li>
         <li><strong>CLI</strong> - low friction to use, intuitive to use for developers, hard to make UI/UX for applying/displaying changes across different model/agent outputs</li>
         <li><strong>Web</strong> - lowest friction to use, harder to convince hardcore full-stack/backend to use (unless for web dev + more design heavy engineers + vibecoders)</li>
-        <li><strong>Desktop</strong> - this is Web but in an Electron app, similar to <a href="https://conductor.build/" target="_blank" rel="noopener noreferrer">Conductor</a></li>
         <li><strong>Github bot</strong> - very similar to the existing Codearena</li>
       </ol>
       <p style="margin-bottom: 0;">
-        The best option in my opinion is to develop a <strong>CLI</strong>. It's the best medium meeting developers where they want to code (on their own machines) and having a low barrier to entry (just a package install vs installing a VSCode Extension/IDE). People switch between Codex and Claude Code all the time, however, the stickiness of Cursor is much higher.
+        The best option in my opinion is to develop a <strong>CLI</strong>. It's the best medium meeting developers where they want to code (on their own machines) and having a low barrier to entry (just a package install vs installing a VSCode Extension/IDE). People switch between Codex and Claude Code all the time, however, the stickiness of Cursor is much higher. The runner up would be the <strong>Web interface</strong>; I think this represents the future as developers become more hands-off and asynchronous coding agents such as background agents become the norm.
       </p>
     </div>
 
@@ -122,7 +121,7 @@
       <em>A big caveat is that all of these form factors also contribute a different flavor of evaluations: Github bot captures how good are frontier models at solving production bugs, the existing Code Arena in LMArena largely captures the design taste of a model for web development tasks, a CLI/extension captures how good models are at iterative development tasks...</em>
     </p>
 
-    <h2><span class="section-number">Form Factor 1:</span> VSCode Extension</h2>
+    <h2 id="form-factor-1"><span class="section-number">Form Factor 1:</span> VSCode Extension</h2>
 
     <p>
       This form factor is exactly like Cursor 2.0. This version allows you to specify how many models/agents you want to run at once, and then it spawns all of them to complete a given task. This is what you see on the right hand side - if you click on an agent, it shows the output for that given agent applied on your codebase. It is the most intuitive UI/UX that abstracts the complexity of Git worktrees away from the user.
@@ -146,64 +145,69 @@
       The downsides of this approach are also fairly obvious. The activation energy for a dev to install an extension in VSCode/Cursor is high (at least compared to the other form factors), especially if they are already subscribed to Cursor, but it is not impossible to convince a dev to use this for free.
     </p>
 
-    <h2><span class="section-number">Form Factor 2:</span> CLI</h2>
+    <h2 id="form-factor-2"><span class="section-number">Form Factor 2:</span> CLI</h2>
 
     <p>
       Interestingly enough, there seems to be demand for this already in the LMArena Discord: a CLI where you have 2 outputs instead of 1 for each feature request that you have.
     </p>
 
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+      <div style="display: flex; align-items: center;">
+        <img src="../src/lmarena-discord-cli-feedback.png" alt="LMArena Discord Feedback" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      </div>
+      <div style="display: flex; align-items: center;">
+        <img src="../src/claude-code.jpeg" alt="Claude Code CLI" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      </div>
+    </div>
+
+    <p>
+      Each prompt would result in 2 different features similar to the <a href="#form-factor-1">VSCode Extension</a>, you could use the left (← key) and right key (→ key) to apply each model's changes to your codebase. The user could test the changes on their codebase on their own machine. And then click enter (↵) on the selected side to use an output for the next prompt.
+    </p>
+
+    <p>The workflow would be:</p>
+    <ol>
+      <li>User submits prompt to CLI.</li>
+      <li>User switches between model outputs using arrow keys (← / →).</li>
+      <li>Test the changes on their own machine.</li>
+      <li>Press enter (↵) to apply the selected model's output.</li>
+      <li>Repeat. ↻</li>
+    </ol>
+
     <p>
       The CLI approach offers several advantages. It meets developers where they already work - in the terminal - and has a much lower barrier to entry than a full IDE extension. Developers can simply install a package and start comparing model outputs immediately. The challenge lies in creating an intuitive interface for viewing and applying changes across different model outputs without the rich visual interface that an IDE provides.
     </p>
 
-    <p>
-      One possible implementation could use Git worktrees under the hood, similar to the VSCode extension, but present changes through terminal-based diff views or by opening files in the user's preferred editor. The CLI could support commands like:
-    </p>
-
-    <ul>
-      <li><code>codearena run "implement feature X"</code> - spawns multiple models</li>
-      <li><code>codearena compare</code> - shows side-by-side diffs</li>
-      <li><code>codearena apply &lt;model&gt;</code> - applies chosen solution</li>
-    </ul>
-
-    <h2><span class="section-number">Form Factor 3:</span> Web</h2>
+    <h2 id="form-factor-3"><span class="section-number">Form Factor 3:</span> Web</h2>
 
     <p>
-      A web-based interface has the lowest friction to use - no installation required, just visit a URL. However, this form factor faces a unique challenge: it's harder to convince hardcore full-stack/backend and systems programmers to use a web interface for code evaluation, unless they're working on web development projects or are more design-oriented engineers.
+      LMArena recently launched their own Code Arena on the web. It works similar to how you would use <a href="https://lovable.dev/" target="_blank" rel="noopener noreferrer">Lovable</a> or <a href="https://replit.com/" target="_blank" rel="noopener noreferrer">Replit</a>.
     </p>
+
+    <div style="text-align: center; margin: 2rem 0;">
+      <img src="../src/lmarena-code.png" alt="LMArena Code Arena" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    </div>
+
+    <p>The workflow is straightforward:</p>
+    <ol>
+      <li>User submits prompt in the web interface.</li>
+      <li>Models generate competing implementations.</li>
+      <li>Select the preferred implementation.</li>
+      <li>Repeat. ↻</li>
+    </ol>
 
     <p>
-      The web interface would likely work best for:
+      However, this flavor of the web form factor is geared mostly towards web development. One could add a "Connect to Github" button and expand the functionality to achieve something like Anthropic's Claude Code on the Web to be positioned towards more developers.
     </p>
-    <ul>
-      <li>Frontend and fullstack web developers</li>
-      <li>Design-heavy engineering tasks</li>
-      <li>Quick prototyping and "vibe coding"</li>
-      <li>Collaborative code reviews</li>
-    </ul>
+
+    <div style="text-align: center; margin: 2rem 0;">
+      <img src="../src/claudecode-web.jpg" alt="Claude Code Web Interface" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    </div>
 
     <p>
-      The existing Codearena implementation on LMArena's website demonstrates this approach well, allowing users to compare model outputs in a browser-based environment.
+      But both approaches in their current state (to the best of my knowledge) are not appealing for hardcore developers. These mediums for the time being are better suited for vibecoders, prototyping, experimentation — albeit still an extremely useful benchmark that tells you a lot about where models stand.
     </p>
 
-    <h2><span class="section-number">Form Factor 4:</span> Desktop App</h2>
-
-    <p>
-      This is essentially the web interface packaged as an Electron app, similar to <a href="https://conductor.build/" target="_blank" rel="noopener noreferrer">Conductor</a>. It combines some benefits of both web and native approaches:
-    </p>
-
-    <ul>
-      <li>Native feel and better file system access than a pure web app</li>
-      <li>Can integrate more deeply with the local development environment</li>
-      <li>Easier distribution than a VSCode extension for users who don't use VSCode</li>
-      <li>Still requires downloading and installing an application</li>
-    </ul>
-
-    <p>
-      The desktop app approach could be particularly appealing for developers who want a dedicated tool for model comparison without integrating it into their existing IDE.
-    </p>
-
-    <h2><span class="section-number">Form Factor 5:</span> Github Bot</h2>
+    <h2 id="form-factor-4"><span class="section-number">Form Factor 4:</span> Github Bot</h2>
 
     <p>
       This is very similar to the existing Codearena implementation. The Github bot approach has unique advantages for evaluating production-level bug fixes and real-world development scenarios.
@@ -226,7 +230,7 @@
       <li>Scales well for OSS maintainers with many issues</li>
     </ul>
 
-    <h2>Why didn't Codearena blow up?</h2>
+    <h3>Why didn't Codearena blow up?</h3>
 
     <p>
       In practice, it seems like a great idea! OSS maintainers have hundreds of issues that need to be solved and we can provide solutions at scale for free. A win-win situation. Except, there are problems.
